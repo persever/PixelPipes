@@ -9,9 +9,9 @@ var GameView = Pipes.GameView = function GameView(game) {
 };
 
 GameView.prototype.start = function start() {
-  setInterval(function () {
-    that.game.draw();
-  }, 16);
+  // setInterval(function () {
+    this.game.draw();
+  // }.bind(this), 16);
 };
 
 })();

@@ -3,9 +3,9 @@
     window.Pipes = {};
   };
 
-  var times = function(n, callback) {
-    var i = 1;
-    while (i <= n) {
+  times = function(n, callback) {
+    var i = 0;
+    while (i < n) {
       callback(i);
       i++
     }

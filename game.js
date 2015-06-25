@@ -7,13 +7,13 @@
 
   var Game = Pipes.Game = function Game(sizeOption) {
     var size = sizeOption || 5;
-    this.dim_x = DIM_X;
-    this.dim_y = DIM_Y;
+    // this.dim_x = DIM_X;
+    // this.dim_y = DIM_Y;
     this.board = new Pipes.Board(size);
   };
 
-  var DIM_X = Pipes.DIM_X = 900; // use the lesser of window.height to make square side length, -100px -- responsive??
-  var DIM_Y = Pipes.DIM_Y = DIM_X;
+  // var DIM_X = Pipes.DIM_X = 900; // use the lesser of window.height to make square side length, -100px -- responsive??
+  // var DIM_Y = Pipes.DIM_Y = DIM_X;
 
   Game.prototype.isWon = function isWon() {
     if (this.board.pipes.every(function (pipe) {
@@ -33,22 +33,21 @@
   // };
 
   Game.prototype.draw = function draw() {
-    this.board.grid.forEach(function(row) {
-      var $displayRow = $("#game-canvas").append($("<div>").attr("data-row", row));
-      $displayRow.forEach(function(displayRow) {
-        times(grid.length, function(col) {
-          displayRow.append($("<div>").attr("data-col", col))
-        })
+    $("#game-canvas").css("height", window.height - 100);
+    $("#game-canvas").css("width", window.height - 100);
+    var grid = this.board.grid
+    times(grid.length, function(row) {
+      var $displayRow = $("<div>").attr("data-row", row)
+      $("#game-canvas").append($displayRow);
+      times(grid.length, function(col) {
+        $displayRow.append($("<div>").attr("data-row-and-col", row + "," + col));
       });
-    })
+    });
 
     var pipeEnds = this.board.pipeEnds;
     for (var position in pipeEnds) {
-      $("div")
-        .data("row", position[0])
-        .data("col", position[1])
-        .addClass("end")
-        .addClass(pipeEnds[position]);
+      var $square = $("[data-row-and-col=\"" + position[1] + "," + position[3] + "\"]");
+      $square.addClass("end").addClass(pipeEnds[position]);
     };
   };
 
