@@ -4,15 +4,14 @@ if ( window.Pipes === undefined ) {
   window.Pipes = {};
 };
 
-var GameView = Pipes.GameView = function GameView(game, ctx) {
+var GameView = Pipes.GameView = function GameView(game) {
   this.game = game;
-  this.ctx = ctx;
 };
 
 GameView.prototype.start = function start() {
   setInterval(function () {
-    that.game.draw(this.ctx);
-  }.bind(this), 16);
+    that.game.draw();
+  }, 16);
 };
 
 })();

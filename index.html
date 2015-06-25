@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <canvas id="game-canvas"></canvas>
+    <div id="game-canvas"></div>
 
     <script src="lib/util.js"></script>
     <script src="lib/game.js"></script>
@@ -21,11 +21,11 @@
     <script src="lib/index.css.scss"></script>
 
     <script>
-      var canvasEl = document.getElementById("game-canvas");
-      canvasEl.height = window.innerHeight;
-      canvasEl.width = window.innerWidth;
+      // var canvasEl = document.getElementById("game-canvas");
+      // canvasEl.height = window.innerHeight;
+      // canvasEl.width = window.innerWidth;
       var game = new Pipes.Game();
-      new Asteroids.GameView(game, canvasEl.getContext("2d")).start();
+      new Pipes.GameView(game).start();
     </script>
   </body>
 </html>
