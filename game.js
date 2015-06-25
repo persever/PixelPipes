@@ -5,10 +5,11 @@
 
 // take in optional grid size
 
-  var Game = Pipes.Game = function Game() {
+  var Game = Pipes.Game = function Game(sizeOption) {
+    var size = sizeOption || 5;
     this.dim_x = DIM_X;
     this.dim_y = DIM_Y;
-    this.board = Pipes.Board.generateBoard(); //grid size!
+    this.board = new Pipes.Board(size);
   }
 
   var DIM_X = Pipes.DIM_X = 900; // use the lesser of window.height to make square side length, -100px -- responsive??
@@ -24,29 +25,24 @@
     }
   };
 
-  // Game.prototype.checkCollisions = function checkCollisions() {
-  //   var asteroids = this.asteroids;
-  //   var bullets = this.bullets;
-  //   for (var a = 0; a < asteroids.length; a++) {
-  //     if (asteroids[a].isCollidedWith(this.ship)) {
-  //       this.ship.relocate();
-  //     }
-  //     for (var b = 0; b < bullets.length; b++) {
-  //       if (asteroids[a].isCollidedWith(bullets[b])) {
-  //         this.asteroids.splice(a, 1);
-  //         a--;
-  //         this.bullets.splice(b, 1);
-  //         b--;
-  //         break;
-  //       }
-  //     }
-  //   }
+  // Game.prototype.draw = function draw(ctx) {
+  //   ctx.clearRect(0, 0, DIM_X + 100, DIM_Y + 100);
+  //   this.allObjects().forEach( function(obj) {
+  //     obj.draw(ctx);
+  //   });
   // };
 
-  Game.prototype.draw = function draw(ctx) {
-    ctx.clearRect(0, 0, DIM_X + 100, DIM_Y + 100);
-    this.allObjects().forEach( function(obj) {
-      obj.draw(ctx);
+  Game.prototype.draw = function draw() {
+    this.board.grid.forEach(function(row) {
+      var $displayRow = $("#game-canvas").append($("<div>").attr("data-row", row));
+      $displayRow.forEach(function(displayRow) {
+        // grid.length. times do....
+        displayRow.append($("<div>").attr("data-col", //))
+      });
+    })
+
+    for (var position in this.board.pipeEnds) {
+      position
     });
   };
 
