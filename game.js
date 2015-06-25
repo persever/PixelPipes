@@ -7,14 +7,9 @@
 
   var Game = Pipes.Game = function Game(sizeOption) {
     var size = sizeOption || 5;
-    // this.dim_x = DIM_X;
-    // this.dim_y = DIM_Y;
     this.board = new Pipes.Board(size);
     $(window).on("resize", this.draw.bind(this));
   };
-
-  // var DIM_X = Pipes.DIM_X = 900; // use the lesser of window.height to make square side length, -100px -- responsive??
-  // var DIM_Y = Pipes.DIM_Y = DIM_X;
 
   Game.prototype.isWon = function isWon() {
     if (this.board.pipes.every(function (pipe) {
@@ -26,16 +21,9 @@
     }
   };
 
-  // Game.prototype.draw = function draw(ctx) {
-  //   ctx.clearRect(0, 0, DIM_X + 100, DIM_Y + 100);
-  //   this.allObjects().forEach( function(obj) {
-  //     obj.draw(ctx);
-  //   });
-  // };
-
   Game.prototype.draw = function draw() {
     $("#game-canvas").empty();
-    
+
     // factor sizing out into separate method
 
     var frameLength = $(window).height();
