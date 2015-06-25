@@ -49,7 +49,7 @@
         .data("col", position[1])
         .addClass("end")
         .addClass(pipeEnds[position]);
-    });
+    };
   };
 
 })();
