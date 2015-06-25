@@ -2,7 +2,7 @@
 
 if ( window.Pipes === undefined ) {
   window.Pipes = {};
-}
+};
 
 var GameView = Pipes.GameView = function GameView(game, ctx) {
   this.game = game;

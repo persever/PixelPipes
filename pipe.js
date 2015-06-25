@@ -2,7 +2,7 @@
 
 if ( window.Pipes === undefined ) {
   window.Pipes = {};
-}
+};
 
 var Pipe = Pipes.Pipe = function Pipe(options) {};
 

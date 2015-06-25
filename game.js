@@ -1,7 +1,7 @@
 (function () {
   if ( window.Pipes === undefined ) {
     window.Pipes = {};
-  }
+  };
 
 // take in optional grid size
 
@@ -10,7 +10,7 @@
     this.dim_x = DIM_X;
     this.dim_y = DIM_Y;
     this.board = new Pipes.Board(size);
-  }
+  };
 
   var DIM_X = Pipes.DIM_X = 900; // use the lesser of window.height to make square side length, -100px -- responsive??
   var DIM_Y = Pipes.DIM_Y = DIM_X;
@@ -36,13 +36,19 @@
     this.board.grid.forEach(function(row) {
       var $displayRow = $("#game-canvas").append($("<div>").attr("data-row", row));
       $displayRow.forEach(function(displayRow) {
-        // grid.length. times do....
-        displayRow.append($("<div>").attr("data-col", //))
+        times(grid.length, function(col) {
+          displayRow.append($("<div>").attr("data-col", col))
+        })
       });
     })
 
-    for (var position in this.board.pipeEnds) {
-      position
+    var pipeEnds = this.board.pipeEnds;
+    for (var position in pipeEnds) {
+      $("div")
+        .data("row", position[0])
+        .data("col", position[1])
+        .addClass("end")
+        .addClass(pipeEnds[position]);
     });
   };
 

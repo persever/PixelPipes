@@ -1,18 +1,16 @@
 (function () {
   if ( window.Pipes === undefined ) {
     window.Pipes = {};
-  }
+  };
 
-  Number.prototype.times = function(callback) {
-    var i = 0;
-    while (i <= this) {
+  var times = function(n, callback) {
+    var i = 1;
+    while (i <= n) {
       callback(i);
       i++
     }
 
-    // ensure that this works!!
-    return this;
-  }
-
+    return n;
+  };
 
 })();
