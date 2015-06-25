@@ -33,14 +33,22 @@
   // };
 
   Game.prototype.draw = function draw() {
-    $("#game-canvas").css("height", window.height - 100);
-    $("#game-canvas").css("width", window.height - 100);
+    $("#game-canvas").css("height", $(window).height() - 100);
+    $("#game-canvas").css("width", $(window).height() - 100);
+
     var grid = this.board.grid
     times(grid.length, function(row) {
       var $displayRow = $("<div>").attr("data-row", row)
+      $displayRow.css("height", $("#game-canvas").height() / grid.length)
+      $displayRow.css("width", $("#game-canvas").height())
+      $displayRow.addClass("row");
       $("#game-canvas").append($displayRow);
       times(grid.length, function(col) {
-        $displayRow.append($("<div>").attr("data-row-and-col", row + "," + col));
+        var $square = $("<div>").attr("data-row-and-col", row + "," + col)
+        $displayRow.append($square);
+        $square.addClass("col");
+        $square.css("height", $("#game-canvas").height() / grid.length )
+        $square.css("width", $("#game-canvas").height() / grid.length )
       });
     });
 

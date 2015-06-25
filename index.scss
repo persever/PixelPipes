@@ -2,12 +2,18 @@
   border: 3px solid black;
 }
 
-#game-canvas div {
-  border: 1px solid black;
+#game-canvas .row {
+  // border: 1px solid black;
+  display: block;
+}
+
+#game-canvas .col {
+  // border: 1px solid black;
+  display: inline-block;
 }
 
 .W {
-  background-color: #38ABFC;
+  background-color: #99D3FC;
 }
 
 .L {
