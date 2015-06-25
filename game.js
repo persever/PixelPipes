@@ -8,7 +8,7 @@
   var Game = Pipes.Game = function Game() {
     this.dim_x = DIM_X;
     this.dim_y = DIM_Y;
-    this.board = this.generateBoard();
+    this.board = Pipes.Board.generateBoard(); //grid size!
   }
 
   var DIM_X = Pipes.DIM_X = 900; // use the lesser of window.height to make square side length, -100px -- responsive??
@@ -22,10 +22,6 @@
     } else {
       return false;
     }
-  };
-
-  Game.prototype.generateBoard = function generateBoard() {
-    Pipes.Board.
   };
 
   // Game.prototype.checkCollisions = function checkCollisions() {
