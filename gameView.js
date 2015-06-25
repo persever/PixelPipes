@@ -11,7 +11,7 @@ var GameView = Pipes.GameView = function GameView(game, ctx) {
 
 GameView.prototype.start = function start() {
   setInterval(function () {
-    that.game.step(that.ctx);
+    that.game.draw(this.ctx);
   }.bind(this), 16);
 };
 
