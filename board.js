@@ -6,18 +6,7 @@
   var Board = Pipes.Board = function Board(game, size) {
     this.game = game;
     this.pipeEnds = this.setPipeEnds(size);
-    // this.grid = Board.generateGrid(size);
   };
-
-  // take a size!
-  // Board.generateGrid = function generateGrid(size) {
-  //   var grid = [];
-  //   times(size, function () {
-  //     var row = new Array(size);
-  //     grid.push(row);
-  //     });
-  //   return grid;
-  // };
 
   Board.prototype.setPipeEnds = function pipeEnds(size) {
     var ends = null
@@ -33,13 +22,13 @@
         [ends[color][1][0], ends[color][1][2]]
       );
       pipeEnds.push(pipeEnd1);
-      var pipeEnd1 = new Pipes.PipeEnd(this,
+      var pipeEnd2 = new Pipes.PipeEnd(this,
         ends[color][1][0],
         ends[color][1][2],
         color,
         [ends[color][0][0], ends[color][0][2]]
       );
-      pipeEnds.push(pipeEnd1);
+      pipeEnds.push(pipeEnd2);
     };
 
     return pipeEnds;

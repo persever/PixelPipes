@@ -27,25 +27,40 @@ PipeEnd.prototype.isConnected = function isConnected(pos) {
   var that = this;
   var pos = pos || this.pos;
 
-  return true if pos = this.oppositeEndPos;
+  console.log(pos);
+  console.log(this.oppositeEndPos);
 
-  var $tile = null
-  function adjacentSameTile(pos) {
-    var adjacentPositions = []
-    ADJACENT_POSITIONS.forEach(function(distance) {
-      adjacentPositions.push([pos[0] + distance[0], pos[1]+distance[1]);
-    };
-    adjacentPositions.forEach(function(pos) {
-      var $square = $("#" + pos[0] + "-" + pos[1])
-      // in game or board or wherever, prevent going back over self! (mousing back over can remove class (except on ends))
-      $tile = $square if square.hasClass(that.color);
-    });
+  if (pos === this.oppositeEndPos) {
+    return true;
   }
 
-  while (hasAdjacentSameTile(pos)) {
-    if (pos !== that.oppositeEndPos) {
-      that.isConnected.call(that, pos)
-    }
+  var $sameTile = null;
+  var sameTilePos = null;
+  // function adjacentSameTile(pos) {
+    // console.log("checking adjacent");
+    var adjacentPositions = []
+    ADJACENT_POSITIONS.forEach(function(distance) {
+      adjacentPositions.push([ parseInt(pos[0]) + distance[0], parseInt(pos[1]) + distance[1] ]);
+    });
+    adjacentPositions.forEach(function(adjacentPos) {
+      // in game or board or wherever, prevent going back over self! (mousing back over can remove class (except on ends))
+      // and don't let it write over other ends!! what happened to that??
+      var $square = $("#" + adjacentPos[0] + "-" + adjacentPos[1])
+      if ($square.hasClass(that.color)) {
+        $sameTile = $square;
+        sameTilePos = [adjacentPos[0], adjacentPos[1]];
+      }
+    });
+
+    // return $sameTile;
+  // }
+
+  // adjacentSameTile(pos);
+  // console.log($sameTile);
+  // console.log(sameTilePos);
+
+  if ($sameTile && sameTilePos !== that.oppositeEndPos) {
+    that.isConnected.call(that, sameTilePos)
   }
 
   return false;

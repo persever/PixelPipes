@@ -15,10 +15,12 @@
 
   Game.prototype.isWon = function isWon() {
     if (this.board.pipeEnds.every(function (pipe) { pipe.isConnected.call(pipe); })) {
+      console.log("won!");
+      // $("#game-canvas").trigger("won");
       // return true;
-      $("#game-canvas").trigger("won");
     } else {
-      return false;
+      console.log("not won");
+      // return false;
     }
   };
 
