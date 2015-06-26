@@ -25,7 +25,7 @@
   Game.prototype.draw = function draw() {
     this.$canvas.empty();
 
-    // factor sizing out into separate method
+    // factor sizing out into separate method?
 
     var frameLength = $(window).height();
     if ($(window).width() < $(window).height()) {
@@ -50,25 +50,14 @@
         $square.addClass("col");
         $square.css("height", frameLength / size);
         $square.css("width", frameLength / size);
-        $square.on("mouseover", that.fillPath.bind(that));
+        if (!that.board.pipeEnds.hasOwnProperty(row + "-" + col)) {
+          $square.on("mouseover", that.fillPath.bind(that));
+        }
         $square.on("mouseup", that.deselectPipeColor.bind(that));
       });
     });
 
-    setTimeout(this.board.drawPipeEnds.bind(this.board), 1);
-
-    // var pipeEnds = this.board.pipeEnds;
-    // var that = this;
-    // for (var position in pipeEnds) {
-    //   var $pipeEndSquare = $("[data-row-and-col=\""
-    //                           + position[1] + "," + position[3] + "\"]");
-    //   $pipeEndSquare.addClass("end").addClass(pipeEnds[position]);
-    //
-    //   $pipeEndSquare.on("mousedown", function () {
-    //     that.selectPipeColor(pipeEnds[position])
-    //     console.log(pipeEnds[position])
-    //   });
-    // };
+    this.board.drawPipeEnds.call(this.board);
   };
 
   Game.prototype.selectPipeColor = function selectPipeColor(color) {
