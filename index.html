@@ -19,7 +19,7 @@
       <div id="game-canvas"></div>
     </div>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="./jquery-2.1.4.min.js"></script>
     <script src="./util.js"></script>
     <script src="./game.js"></script>
     <script src="./board.js"></script>
@@ -30,8 +30,12 @@
       // var canvasEl = document.getElementById("game-canvas");
       // canvasEl.height = window.innerHeight;
       // canvasEl.width = window.innerWidth;
-      var game = new Pipes.Game();
-      new Pipes.GameView(game).start();
+      $(function() {
+        var game = new Pipes.Game();
+        setTimeout(function() {
+          new Pipes.GameView(game).start();
+        }, 0);
+      })
     </script>
   </body>
 </html>

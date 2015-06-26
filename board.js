@@ -3,25 +3,47 @@
     window.Pipes = {};
   };
 
-  var Board = Pipes.Board = function Board(size) {
-    this.grid = Board.generateGrid(size);
-    this.pipeEnds = Board.setPipeEnds(size);
+  var Board = Pipes.Board = function Board(game, size) {
+    this.game = game;
+    this.pipeEnds = this.setPipeEnds(size);
+    // this.grid = Board.generateGrid(size);
   };
 
   // take a size!
-  Board.generateGrid = function generateGrid(size) {
-    var grid = [];
-    times(size, function () {
-      var row = new Array(size);
-      grid.push(row);
-      });
-    return grid;
+  // Board.generateGrid = function generateGrid(size) {
+  //   var grid = [];
+  //   times(size, function () {
+  //     var row = new Array(size);
+  //     grid.push(row);
+  //     });
+  //   return grid;
+  // };
+
+  Board.prototype.setPipeEnds = function pipeEnds(size) {
+    var ends = null
+    if (size === 5) {
+      ends = FIVES[Math.floor(Math.random() * FIVES.length)]; //factor out
+    }
+    // var pipeEnds = []
+    // var that = this;
+    // for (var position in ends) {
+    //   var pipeEnd = new Pipes.PipeEnd(this.game, position[1], position[3], ends[position]);
+    //   pipeEnds.push(pipeEnd);
+    // };
+
+    return ends;
+    // return pipeEnds;
   };
 
-  Board.setPipeEnds = function pipeEnds(size) {
-    if (size === 5) {
-      return FIVES[Math.floor(Math.random() * FIVES.length)]; //factor out
-    }
+  Board.prototype.drawPipeEnds = function drawPipeEnds() {
+    var that = this;
+    for (var position in this.pipeEnds) {
+      var $pipeEndSquare = $("#" + position[1] + "-" + position[3])
+      $pipeEndSquare.addClass("end").addClass(this.pipeEnds[position]);
+      $pipeEndSquare.on("mousedown", function () {
+        that.game.selectPipeColor(color)
+      });
+    };
   };
 
   var FIVES = [
