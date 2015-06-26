@@ -47,7 +47,7 @@
       times(size, function(col) {
         var $square = $("<div>").attr("id", row + "-" + col)
         $displayRow.append($square);
-        $square.addClass("col");
+        $square.addClass("empty");
         $square.css("height", frameLength / size);
         $square.css("width", frameLength / size);
         if (!that.board.pipeEnds.hasOwnProperty(row + "-" + col)) {
@@ -70,6 +70,7 @@
 
   Game.prototype.fillPath = function fillPath(event) {
     if (this.selectedPipeColor) {
+      $(event.currentTarget).removeClass();
       $(event.currentTarget).addClass(this.selectedPipeColor);
     }
   };

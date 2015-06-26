@@ -24,7 +24,7 @@
   display: block;
 }
 
-#game-canvas .col {
+.empty, .W, .L, .B, .Y, .O {
   display: inline-block;
 }
 

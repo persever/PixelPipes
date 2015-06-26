@@ -42,10 +42,11 @@
     for (var position in this.pipeEnds) {
       var $pipeEndSquare = $("#" + position[0] + "-" + position[2])
       var color = that.pipeEnds[position]
-      $pipeEndSquare.addClass("end").addClass(color);
+      $pipeEndSquare.removeClass();
+      $pipeEndSquare.addClass(color);
       (function ($el, color) {
         $el.on("mousedown", function () { that.game.selectPipeColor(color) });
-      })($pipeEndSquare, color)
+      })($pipeEndSquare, color);
     };
   };
 
