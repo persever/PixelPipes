@@ -24,44 +24,40 @@
     if (size === 5) {
       ends = FIVES[Math.floor(Math.random() * FIVES.length)]; //factor out
     }
-    // var pipeEnds = []
-    // var that = this;
-    // for (var position in ends) {
-    //   var pipeEnd = new Pipes.PipeEnd(this.game, position[1], position[3], ends[position]);
-    //   pipeEnds.push(pipeEnd);
-    // };
+    var pipeEnds = [];
+    for (var color in ends) {
+      var pipeEnd1 = new Pipes.PipeEnd(this,
+        ends[color][0][0],
+        ends[color][0][2],
+        color,
+        [ends[color][1][0], ends[color][1][2]]
+      );
+      pipeEnds.push(pipeEnd1);
+      var pipeEnd1 = new Pipes.PipeEnd(this,
+        ends[color][1][0],
+        ends[color][1][2],
+        color,
+        [ends[color][0][0], ends[color][0][2]]
+      );
+      pipeEnds.push(pipeEnd1);
+    };
 
-    return ends;
-    // return pipeEnds;
+    return pipeEnds;
   };
 
-  // Board.prototype.draw = function draw() {};
-
   Board.prototype.drawPipeEnds = function drawPipeEnds() {
-    var that = this;
-    for (var position in this.pipeEnds) {
-      var $pipeEndSquare = $("#" + position[0] + "-" + position[2])
-      var color = that.pipeEnds[position]
-      $pipeEndSquare.removeClass();
-      $pipeEndSquare.addClass(color);
-      (function ($el, color) {
-        $el.on("mousedown", function () { that.game.selectPipeColor(color) });
-      })($pipeEndSquare, color);
-    };
+    this.pipeEnds.forEach(function(pipeEnd){
+      pipeEnd.draw();
+    })
   };
 
   var FIVES = [
     {
-      "4-0": "L",
-      "2-3": "L",
-      "2-2": "B",
-      "0-4": "B",
-      "1-3": "W",
-      "4-4": "W",
-      "0-0": "Y",
-      "2-1": "Y",
-      "1-0": "O",
-      "3-2": "O"
+      "L": ["4-0", "2-3"],
+      "B": ["2-2", "0-4"],
+      "W": ["1-3", "4-4"],
+      "Y": ["0-0", "2-1"],
+      "O": ["1-0", "3-2"]
     }
   ]
 

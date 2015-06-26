@@ -10,13 +10,13 @@
     this.$canvas = $("#game-canvas");
     this.selectedPipeColor = null;
     $(window).on("resize", this.draw.bind(this));
+    $("#game-canvas").on("won", this.victory.bind(this))
   };
 
   Game.prototype.isWon = function isWon() {
-    if (this.board.pipes.every(function (pipe) {
-      pipe.isConnected();
-    })) {
-      return true;
+    if (this.board.pipeEnds.every(function (pipe) { pipe.isConnected.call(pipe); })) {
+      // return true;
+      $("#game-canvas").trigger("won");
     } else {
       return false;
     }
@@ -66,6 +66,7 @@
 
   Game.prototype.deselectPipeColor = function deselectPipeColor() {
     this.selectedPipeColor = null;
+    this.isWon();
   };
 
   Game.prototype.fillPath = function fillPath(event) {
@@ -73,6 +74,12 @@
       $(event.currentTarget).removeClass();
       $(event.currentTarget).addClass(this.selectedPipeColor);
     }
+  };
+
+  Game.prototype.victory = function victory() {
+    // render just in/over #game-canvas!
+    $victoryModal = $("<div id=\"victory-modal\">You won!</div>");
+    $("body").prepend($("<div id=\"victory-backdrop\"></div>")).prepend($victoryModal);
   };
 
 })();

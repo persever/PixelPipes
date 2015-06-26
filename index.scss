@@ -24,6 +24,31 @@
   display: block;
 }
 
+#victory-backdrop {
+  position: fixed;
+  background-color: rgba(0, 0, 0, .5);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  text-align: center;
+}
+
+#victory-modal {
+  position: absolute;
+  background-color: white;
+  min-height: 100px;
+  min-width: 200px;
+  padding: 20px;
+  z-index: 101;
+  border-radius: 2px;
+  margin: 0 !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .empty, .W, .L, .B, .Y, .O {
   display: inline-block;
 }
