@@ -79,6 +79,7 @@ PipeEnd.prototype.draw = function draw() {
 
 PipeEnd.prototype.isConnected = function isConnected(pos, lastPos) {
   var pos = pos || this.pos;
+  // console.log("i'm looking at " + pos);
   // lastPos starts undefined
 
   // console.log(lastPos);
@@ -147,13 +148,9 @@ PipeEnd.prototype.adjacentTile = function adjacentTile(currentPos, lastPos) {
 
 var ADJACENT_POSITIONS = [
   [0,1],
-  [1,1],
   [1,0],
-  [1,-1],
   [0,-1],
-  [-1,-1],
-  [-1,0],
-  [-1,1]
+  [-1,0]
 ];
 
 })();

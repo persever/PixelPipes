@@ -10,8 +10,8 @@
     this.$canvas = $("#game-canvas");
     this.selectedPipeColor = null;
     $(window).on("resize", this.draw.bind(this));
-    $("#game-canvas").on("mouseup", this.mouseUp.bind(this));
     $("#game-canvas").on("won", this.victory.bind(this))
+    $("#game-canvas").on("mouseup", this.mouseUp.bind(this))
   };
 
   Game.prototype.isWon = function isWon() {
@@ -70,6 +70,7 @@
         if (!that.board.pipeEnds.hasOwnProperty(row + "-" + col)) {
           $square.on("mouseover", that.fillPath.bind(that));
         }
+        // $square.on("mouseup", that.mouseUp.bind(that));
       });
     });
 
