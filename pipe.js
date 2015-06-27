@@ -11,7 +11,12 @@ var PipeEnd = Pipes.PipeEnd = function PipeEnd(board, row, col, color, oppositeE
   this.pos = [row,col]
   this.color = color;
   this.oppositeEndPos = oppositeEndPos;
+  this.connected = false;
 };
+
+// MOUSEOVER HOVER CLASS-ADDER SHOULD ONLY ALLOW [0,1], [1,0], [0,-1], [-1,0],
+// AND MAKE GOING OVER FILLED SQUARE OF SELECTED COLOR REMOVE THAT CLASS,
+// AND DO NOTHING TO SQUARES OF OTHER COLORS
 
 PipeEnd.prototype.draw = function draw() {
   var $pipeEndSquare = $("#" + this.row + "-" + this.col)
@@ -21,6 +26,11 @@ PipeEnd.prototype.draw = function draw() {
   (function ($el, color) {
     $el.on("mousedown", function () { that.board.game.selectPipeColor(color) });
   })($pipeEndSquare, this.color);
+  (function ($el, color) {
+    $el.on("mouseup", function () {
+      that.isConnected();
+    });
+  })($pipeEndSquare);
 };
 
 // ***
@@ -69,17 +79,27 @@ PipeEnd.prototype.draw = function draw() {
 
 PipeEnd.prototype.isConnected = function isConnected(pos, lastPos) {
   var pos = pos || this.pos;
+  // lastPos starts undefined
 
+  // console.log(lastPos);
+  // debugger
+  // is this missing some of the middle tiles??
+  // make it just strings (in board construction of new Pipe too!), or in util make array comparing function
+  // console.log("pos === " + pos);
+  // console.log("lastPos === " + lastPos);
+  // debugger
   if ("" + pos + "" === "" + this.oppositeEndPos + "") {
-    console.log("connected");
-    return true;
+    console.log("PIPE IS CONNECTED!");
+    this.connected = true;
   } else if (!this.hasAdjacentTile(pos, lastPos)) {
-    return false;
+    console.log("not connected");
+    this.connected = false;
+  } else {
+    var newPos = this.adjacentTile(pos, lastPos);
+    this.isConnected(newPos, pos);
   }
 
-  this.isConnected(this.adjacentTile(pos, lastPos), pos);
-
-  return false;
+  return this.connected;
 };
 
 PipeEnd.prototype.hasAdjacentTile = function hasAdjacentTile(currentPos, lastPos) {
@@ -100,6 +120,10 @@ PipeEnd.prototype.adjacentTile = function adjacentTile(currentPos, lastPos) {
     adjacentPositions.push([ currentPos[0] + distance[0], currentPos[1] + distance[1] ]);
   });
   var tile = null;
+  // console.log(currentPos);
+  // console.log(lastPos);
+  // console.log(adjacentPositions);
+  // debugger
   adjacentPositions.forEach(function(adjacentPos) {
 // in game or board or wherever, prevent going back over self! (mousing back over can remove class (except on ends))
 // and don't let it write over other ends!! what happened to that??

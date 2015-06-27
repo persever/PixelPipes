@@ -10,22 +10,33 @@
     this.$canvas = $("#game-canvas");
     this.selectedPipeColor = null;
     $(window).on("resize", this.draw.bind(this));
+    $("#game-canvas").on("mouseup", this.mouseUp.bind(this));
     $("#game-canvas").on("won", this.victory.bind(this))
   };
 
   Game.prototype.isWon = function isWon() {
+    // l and o are the only pipes that don't infinitely loop... only l recognizes connection.... wtf...
+    // this.board.pipeEnds[0].isConnected();
+    // this.board.pipeEnds[2].isConnected();
+    // this.board.pipeEnds[4].isConnected();
+    // this.board.pipeEnds[6].isConnected();
+    // this.board.pipeEnds[8].isConnected();
 
-    this.board.pipeEnds[0].isConnected.call(this.board.pipeEnds[0]);
+    this.board.pipeEnds.forEach(function(pipeEnd) {
+      // console.log(pipeEnd.connected);
+      pipeEnd.connected;
+    });
 
-    // make it not check pipe connection front to back and back to front
-    // if (this.board.pipeEnds.every(function (pipeEnd) { pipeEnd.isConnected.call(pipeEnd); })) {
-    //   console.log("won!");
-    //   // $("#game-canvas").trigger("won");
-    //   // return true;
-    // } else {
-    //   console.log("not won");
-    //   // return false;
-    // }
+    // make it not check pipe connection front to back and back to front, just store pipe starts separately
+    // var won = true;
+    // this.board.pipeEnds.forEach(function (pipeEnd){
+    //   if (!pipeEnd.isConnected.call(pipeEnd)) {
+    //     console.log("checking " + pipeEnd.pos);
+    //     won = false;
+    //   }
+    // });
+    // console.log("finished checking all");
+    // return won;
   };
 
   Game.prototype.draw = function draw() {
@@ -59,7 +70,6 @@
         if (!that.board.pipeEnds.hasOwnProperty(row + "-" + col)) {
           $square.on("mouseover", that.fillPath.bind(that));
         }
-        $square.on("mouseup", that.mouseUp.bind(that));
       });
     });
 
