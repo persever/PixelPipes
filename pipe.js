@@ -79,7 +79,7 @@ PipeEnd.prototype.draw = function draw() {
 
 PipeEnd.prototype.isConnected = function isConnected(pos, lastPos) {
   var pos = pos || this.pos;
-  // console.log("i'm looking at " + pos);
+  // console.log("i'm lookin");
   // lastPos starts undefined
 
   // console.log(lastPos);
@@ -90,11 +90,13 @@ PipeEnd.prototype.isConnected = function isConnected(pos, lastPos) {
   // console.log("lastPos === " + lastPos);
   // debugger
   if ("" + pos + "" === "" + this.oppositeEndPos + "") {
-    console.log("PIPE IS CONNECTED!");
+    // console.log(this.color + " IS CONNECTED!");
     this.connected = true;
+    // console.log(this.color + " " + this.connected);
   } else if (!this.hasAdjacentTile(pos, lastPos)) {
-    console.log("not connected");
+    // console.log("not connected");
     this.connected = false;
+    // console.log(this.color + " " + this.connected);
   } else {
     var newPos = this.adjacentTile(pos, lastPos);
     this.isConnected(newPos, pos);

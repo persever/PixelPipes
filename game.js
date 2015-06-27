@@ -23,9 +23,13 @@
     // this.board.pipeEnds[8].isConnected();
 
     this.board.pipeEnds.forEach(function(pipeEnd) {
-      // console.log(pipeEnd.connected);
-      pipeEnd.connected;
+      pipeEnd.isConnected();
+      console.log(pipeEnd.color + " " + pipeEnd.connected);
     });
+      // console.log("won!");
+    // } else {
+    //   console.log("not won");
+    // }
 
     // make it not check pipe connection front to back and back to front, just store pipe starts separately
     // var won = true;
