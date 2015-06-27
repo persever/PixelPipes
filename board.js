@@ -19,14 +19,14 @@
         parseInt(ends[color][0][0]),
         parseInt(ends[color][0][2]),
         color,
-        [ends[color][1][0], ends[color][1][2]]
+        [parseInt(ends[color][1][0]), parseInt(ends[color][1][2])]
       );
       pipeEnds.push(pipeEnd1);
       var pipeEnd2 = new Pipes.PipeEnd(this,
         parseInt(ends[color][1][0]),
         parseInt(ends[color][1][2]),
         color,
-        [ends[color][0][0], ends[color][0][2]]
+        [parseInt(ends[color][0][0]), parseInt(ends[color][0][2])]
       );
       pipeEnds.push(pipeEnd2);
     };

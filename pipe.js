@@ -23,6 +23,10 @@ PipeEnd.prototype.draw = function draw() {
   })($pipeEndSquare, this.color);
 };
 
+// ENTIRELY NEW WAY: INIT A PIPE AS "NOTCONNECTED", MARK "CONNECTED" WHEN THAT HAPPENS,
+// HANDLE DRAGGING BACK (AND DOUBLE-CLICKING ON AN END) AND DROP FLAG WHEN THAT HAPPENS
+// PREVENT PIPES FROM CROSSING EACH OTHER
+
 // ***
 
 // PipeEnd.prototype.isConnected = function isConnected(pos, lastPos) {
@@ -67,52 +71,55 @@ PipeEnd.prototype.draw = function draw() {
 // ***
 
 
-// PipeEnd.prototype.isConnected = function isConnected(pos, lastPos) {
-//   var pos = pos || this.pos;
-//
-//   console.log(pos);
-//
-//   if (pos === this.oppositeEndPos) {
-//     return true;
-//   } else if (!this.hasAdjacentTile(pos, lastPos)) {
-//     return false;
-//   }
-//
-//   this.isConnected(this.adjacentTile(pos, lastPos), pos);
-//
-//   return false;
-// };
-//
-// PipeEnd.prototype.hasAdjacentTile = function hasAdjacentTile(currentPos, lastPos) {
-//   // please refactor so you're not calling that function twice when true
-//   // just test truthiness of return value of main function
-//   if (this.adjacentTile(currentPos, lastPos)) {
-//     return true;
-//   }
-//   return false;
-// };
-//
-// PipeEnd.prototype.adjacentTile = function adjacentTile(currentPos, lastPos) {
-//   // var $sameTile = null;
-//   // var sameTilePos = null;
-//   var adjacentPositions = [];
-//   ADJACENT_POSITIONS.forEach(function(distance) {
-//     adjacentPositions.push([ currentPos[0] + distance[0], currentPos[1] + distance[1] ]);
-//   });
-//   adjacentPositions.forEach(function(adjacentPos) {
-// // in game or board or wherever, prevent going back over self! (mousing back over can remove class (except on ends))
-// // and don't let it write over other ends!! what happened to that??
-//     if (adjacentPos !== lastPos) {
-//       var $square = $("#" + adjacentPos[0] + "-" + adjacentPos[1])
-//       if ($square.hasClass(this.color)) {
-//         // $sameTile = $square;
-//         // sameTilePos = [adjacentPos[0], adjacentPos[1]];
-//         return [adjacentPos[0], adjacentPos[1]];
-//       }
-//     }
-//   }.bind(this));
-//   return null;
-// };
+PipeEnd.prototype.isConnected = function isConnected(pos, lastPos) {
+  var pos = pos || this.pos;
+
+  console.log(pos);
+
+  if (pos === this.oppositeEndPos) {
+    return true;
+  } else if (!this.hasAdjacentTile(pos, lastPos)) {
+    return false;
+  }
+
+  this.isConnected(this.adjacentTile(pos, lastPos), pos);
+
+  return false;
+};
+
+PipeEnd.prototype.hasAdjacentTile = function hasAdjacentTile(currentPos, lastPos) {
+  // please refactor so you're not calling that function twice when true
+  // just test truthiness of return value of main function
+  if (this.adjacentTile(currentPos, lastPos)) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+PipeEnd.prototype.adjacentTile = function adjacentTile(currentPos, lastPos) {
+  // var $sameTile = null;
+  // var sameTilePos = null;
+  var adjacentPositions = [];
+  ADJACENT_POSITIONS.forEach(function(distance) {
+    adjacentPositions.push([ currentPos[0] + distance[0], currentPos[1] + distance[1] ]);
+  });
+  var tile = null;
+  adjacentPositions.forEach(function(adjacentPos) {
+// in game or board or wherever, prevent going back over self! (mousing back over can remove class (except on ends))
+// and don't let it write over other ends!! what happened to that??
+    if ("" + adjacentPos + "" !== "" + lastPos + "") {
+      var $square = $("#" + adjacentPos[0] + "-" + adjacentPos[1])
+      if ($square.hasClass(this.color)) {
+        // $sameTile = $square;
+        // sameTilePos = [adjacentPos[0], adjacentPos[1]];
+        // console.log(adjacentPos);
+        tile = adjacentPos;
+      }
+    }
+  }.bind(this));
+  return tile;
+};
 
 // ***
 
