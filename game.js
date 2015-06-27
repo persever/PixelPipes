@@ -14,14 +14,18 @@
   };
 
   Game.prototype.isWon = function isWon() {
-    if (this.board.pipeEnds.every(function (pipe) { pipe.isConnected.call(pipe); })) {
-      console.log("won!");
-      // $("#game-canvas").trigger("won");
-      // return true;
-    } else {
-      console.log("not won");
-      // return false;
-    }
+
+    this.board.pipeEnds[0].isConnected.call(this.board.pipeEnds[0]);
+
+    // make it not check pipe connection front to back and back to front
+    // if (this.board.pipeEnds.every(function (pipeEnd) { pipeEnd.isConnected.call(pipeEnd); })) {
+    //   console.log("won!");
+    //   // $("#game-canvas").trigger("won");
+    //   // return true;
+    // } else {
+    //   console.log("not won");
+    //   // return false;
+    // }
   };
 
   Game.prototype.draw = function draw() {
@@ -55,7 +59,7 @@
         if (!that.board.pipeEnds.hasOwnProperty(row + "-" + col)) {
           $square.on("mouseover", that.fillPath.bind(that));
         }
-        $square.on("mouseup", that.deselectPipeColor.bind(that));
+        $square.on("mouseup", that.mouseUp.bind(that));
       });
     });
 
@@ -66,7 +70,7 @@
     this.selectedPipeColor = color;
   };
 
-  Game.prototype.deselectPipeColor = function deselectPipeColor() {
+  Game.prototype.mouseUp = function mouseUp() {
     this.selectedPipeColor = null;
     this.isWon();
   };
