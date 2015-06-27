@@ -23,10 +23,6 @@ PipeEnd.prototype.draw = function draw() {
   })($pipeEndSquare, this.color);
 };
 
-// ENTIRELY NEW WAY: INIT A PIPE AS "NOTCONNECTED", MARK "CONNECTED" WHEN THAT HAPPENS,
-// HANDLE DRAGGING BACK (AND DOUBLE-CLICKING ON AN END) AND DROP FLAG WHEN THAT HAPPENS
-// PREVENT PIPES FROM CROSSING EACH OTHER
-
 // ***
 
 // PipeEnd.prototype.isConnected = function isConnected(pos, lastPos) {
@@ -74,9 +70,8 @@ PipeEnd.prototype.draw = function draw() {
 PipeEnd.prototype.isConnected = function isConnected(pos, lastPos) {
   var pos = pos || this.pos;
 
-  console.log(pos);
-
-  if (pos === this.oppositeEndPos) {
+  if ("" + pos + "" === "" + this.oppositeEndPos + "") {
+    console.log("connected");
     return true;
   } else if (!this.hasAdjacentTile(pos, lastPos)) {
     return false;
@@ -108,6 +103,9 @@ PipeEnd.prototype.adjacentTile = function adjacentTile(currentPos, lastPos) {
   adjacentPositions.forEach(function(adjacentPos) {
 // in game or board or wherever, prevent going back over self! (mousing back over can remove class (except on ends))
 // and don't let it write over other ends!! what happened to that??
+// instead of lastPos, track checked positions in case of multiple adjacent
+// (whether make it to fill more or just need to prevent infinite loop when user fills multiple adjacent)
+// make this more efficient...
     if ("" + adjacentPos + "" !== "" + lastPos + "") {
       var $square = $("#" + adjacentPos[0] + "-" + adjacentPos[1])
       if ($square.hasClass(this.color)) {
