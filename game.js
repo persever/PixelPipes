@@ -9,7 +9,7 @@
     this.board = new Pipes.Board(this, this.size);
     this.$canvas = $("#game-canvas");
     this.selectedPipeColor = null;
-    $(window).on("resize", this.draw.bind(this));
+    // $(window).on("resize", this.draw.bind(this));
     $("#game-canvas").on("won", this.victory.bind(this))
     $("#game-canvas").on("mouseup", this.mouseUp.bind(this))
   };
@@ -96,7 +96,7 @@
           $square.addClass(this.selectedPipeColor);
         // } else if ($square.hasClass(this.selectedPipeColor)) {
         //   $square.removeClass();
-        //   $square.addClass("null");
+        //   $square.addClass("null");,
         // }
       // }
       // this.lastPos = row + "-" + col;
