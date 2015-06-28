@@ -4,11 +4,9 @@ if ( window.Pipes === undefined ) {
   window.Pipes = {};
 };
 
-var PipeEnd = Pipes.PipeEnd = function PipeEnd(board, row, col, color, oppositeEndPos) {
+var PipeEnd = Pipes.PipeEnd = function PipeEnd(board, pos, color, oppositeEndPos) {
   this.board = board;
-  this.row = row;
-  this.col = col;
-  this.pos = [row,col]
+  this.pos = pos
   this.color = color;
   this.oppositeEndPos = oppositeEndPos;
   this.connected = false;
@@ -16,9 +14,10 @@ var PipeEnd = Pipes.PipeEnd = function PipeEnd(board, row, col, color, oppositeE
 
 // MAKE GOING OVER FILLED SQUARE OF SELECTED COLOR REMOVE THAT CLASS,
 // AND DO NOTHING TO SQUARES OF OTHER COLORS
+// make the graphics make it obvious that you need to connect to the end (mouse up on the end)
 
 PipeEnd.prototype.draw = function draw() {
-  var $pipeEndSquare = $("#" + this.row + "-" + this.col)
+  var $pipeEndSquare = $("#" + this.pos[0] + "-" + this.pos[1])
   $pipeEndSquare.removeClass();
   $pipeEndSquare.addClass(this.color);
   var that = this;

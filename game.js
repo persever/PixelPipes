@@ -16,10 +16,9 @@
 
   Game.prototype.isWon = function isWon() {
     var won = true
-    this.board.pipeEnds.forEach(function(pipeEnd) {
-      // lose the line below, make the graphics make it obvious that you need to connect to the end (mouse up on the end)
-      // make it not check pipe connection front to back and back to front, just store pipe starts separately
-      if (!pipeEnd.isConnected()) {
+    this.board.pipeEndPairs.forEach(function(pipeEndPair) {
+      // make it not check pipe connection front to back and back to front -- just store pipe starts separately and check those? or store as pairs?
+      if (!pipeEndPair[0].isConnected()) {
        won = false
       }
     });
@@ -59,7 +58,9 @@
         $square.addClass("empty");
         $square.css("height", frameLength / size);
         $square.css("width", frameLength / size);
-        if (!that.board.pipeEnds.hasOwnProperty(row + "-" + col)) {
+        if (!that.board.pipeEndPairs.some(function (pair) {
+            pair.hasOwnProperty(row + "-" + col);
+          })) {
           $square.on("mouseover", that.fillPath.bind(that));
         }
         // $square.on("mouseup", that.mouseUp.bind(that));
@@ -87,7 +88,8 @@
 
   Game.prototype.victory = function victory() {
     // render just in/over #game-canvas!
-    $victoryModal = $("<div id=\"victory-modal\">You won!</div>");
+    $victoryModal = $("<div id=\"victory-modal\"><div class=\"text\">You won!</div></div>");
+    $victoryModal.append($("<button id=\"quit\">QUIT</button>")).append($("<button id=\"continue\">ANOTHER!</button>"));
     $("body").prepend($("<div id=\"victory-backdrop\"></div>")).prepend($victoryModal);
   };
 

@@ -47,15 +47,39 @@
 #victory-modal {
   position: absolute;
   background-color: white;
-  min-height: 100px;
-  min-width: 200px;
   padding: 20px;
+  text-align: center;
   z-index: 101;
   border-radius: 2px;
   margin: 0 !important;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+#victory-modal .text {
+  font-size: 20px;
+  padding: 20px;
+}
+
+#victory-modal button {
+  margin: 10px;
+  background-color: grey;
+  border-radius: 4px;
+  border: none;
+  // height: 25px;
+  padding: 10px;
+  font-size: 15px;
+  color: white;
+  text-align: center;
+}
+
+#victory-modal #quit {
+  background-color: black;
+}
+
+#victory-modal #continue {
+  background-color: #008BEE;
 }
 
 .empty, .W, .L, .B, .Y, .O {

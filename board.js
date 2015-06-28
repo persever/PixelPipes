@@ -5,43 +5,39 @@
 
   var Board = Pipes.Board = function Board(game, size) {
     this.game = game;
-    this.pipeEnds = this.setPipeEnds(size);
+    this.pipeEndPairs = this.setPipeEndPairs(size);
   };
 
-  Board.prototype.setPipeEnds = function pipeEnds(size) {
+  Board.prototype.setPipeEndPairs = function setPipeEndPairs(size) {
     var ends = null
     if (size === 5) {
       ends = FIVES[Math.floor(Math.random() * FIVES.length)]; //factor out
     }
-    var pipeEnds = [];
-
-    // make it a hash instead of an array
-
+    var pipeEndPairs = [];
+    // make it a hash instead of an array?
     for (var color in ends) {
       var pipeEnd1 = new Pipes.PipeEnd(
         this,
-        parseInt(ends[color][0][0]),
-        parseInt(ends[color][0][2]),
+        [parseInt(ends[color][0][0]), parseInt(ends[color][0][2])],
         color,
         [parseInt(ends[color][1][0]), parseInt(ends[color][1][2])]
       );
-      pipeEnds.push(pipeEnd1);
       var pipeEnd2 = new Pipes.PipeEnd(
         this,
-        parseInt(ends[color][1][0]),
-        parseInt(ends[color][1][2]),
+        [parseInt(ends[color][1][0]), parseInt(ends[color][1][2])],
         color,
         [parseInt(ends[color][0][0]), parseInt(ends[color][0][2])]
       );
-      pipeEnds.push(pipeEnd2);
+      pipeEndPairs.push([pipeEnd1, pipeEnd2]);
     };
 
-    return pipeEnds;
+    return pipeEndPairs;
   };
 
   Board.prototype.drawPipeEnds = function drawPipeEnds() {
-    this.pipeEnds.forEach(function(pipeEnd){
-      pipeEnd.draw();
+    this.pipeEndPairs.forEach(function(pipeEndPair){
+      pipeEndPair[0].draw();
+      pipeEndPair[1].draw();
     })
   };
 
