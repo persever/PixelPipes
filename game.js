@@ -23,6 +23,9 @@
     // this.board.pipeEnds[8].isConnected();
 
     this.board.pipeEnds.forEach(function(pipeEnd) {
+      // lose the line below, make the graphics make it obvious that you need to connect to the end (mouse up on the end)
+      // unless you don't give a **** about this awful algorithm
+      // make sure you cut down to checking one pipe end
       pipeEnd.isConnected();
       console.log(pipeEnd.color + " " + pipeEnd.connected);
     });
