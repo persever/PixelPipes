@@ -79,27 +79,27 @@
 
   Game.prototype.fillPath = function fillPath(event) {
     var $square = $(event.currentTarget);
-    var row = parseInt($square.attr("id")[0])
-    var col = parseInt($square.attr("id")[2])
+    // var row = parseInt($square.attr("id")[0])
+    // var col = parseInt($square.attr("id")[2])
     if (this.selectedPipeColor) {
-      var adjacentPositions = []
-      Pipes.ADJACENT_POSITIONS.forEach(function(distance) {
-        var adjacent_row = row + distance[0];
-        var adjacent_col = col + distance[1];
-        if (adjacent_row > -1 && adjacent_row < this.size && adjacent_col > -1 && adjacent_col < this.size) {
-          adjacentPositions.push(adjacent_row + "-" + adjacent_col);
-        }
-      }.bind(this));
-      if (adjacentPositions.indexOf(this.lastPos) !== -1) {
-        if ($square.hasClass("null")) {
+      // var adjacentPositions = []
+      // Pipes.ADJACENT_POSITIONS.forEach(function(distance) {
+      //   var adjacent_row = row + distance[0];
+      //   var adjacent_col = col + distance[1];
+      //   if (adjacent_row > -1 && adjacent_row < this.size && adjacent_col > -1 && adjacent_col < this.size) {
+      //     adjacentPositions.push(adjacent_row + "-" + adjacent_col);
+      //   }
+      // }.bind(this));
+      // if (adjacentPositions.indexOf(this.lastPos) !== -1) {
+        // if ($square.hasClass("null")) {
           $square.removeClass();
           $square.addClass(this.selectedPipeColor);
-        } else if ($square.hasClass(this.selectedPipeColor)) {
-          $square.removeClass();
-          $square.addClass("null");
-        }
-      }
-      this.lastPos = row + "-" + col;
+        // } else if ($square.hasClass(this.selectedPipeColor)) {
+        //   $square.removeClass();
+        //   $square.addClass("null");
+        // }
+      // }
+      // this.lastPos = row + "-" + col;
     }
   };
 
