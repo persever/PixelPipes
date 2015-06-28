@@ -52,7 +52,7 @@ PipeEnd.prototype.hasAdjacentTile = function hasAdjacentTile(currentPos, lastPos
 
 PipeEnd.prototype.adjacentTile = function adjacentTile(currentPos, lastPos) {
   var adjacentPositions = [];
-  ADJACENT_POSITIONS.forEach(function(distance) {
+  Pipes.ADJACENT_POSITIONS.forEach(function(distance) {
     adjacentPositions.push([ currentPos[0] + distance[0], currentPos[1] + distance[1] ]);
   });
   var tile = null;
@@ -68,7 +68,7 @@ PipeEnd.prototype.adjacentTile = function adjacentTile(currentPos, lastPos) {
   return tile;
 };
 
-var ADJACENT_POSITIONS = [
+Pipes.ADJACENT_POSITIONS = [
   [0,1],
   [1,0],
   [0,-1],

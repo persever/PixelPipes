@@ -59,8 +59,6 @@
         $square.css("height", frameLength / size);
         $square.css("width", frameLength / size);
         if ($.inArray((row + "-" + col), that.board.pipeEndPositions) === -1) {
-          console.log(that.board.pipeEndPositions);
-          console.log(row + "-" + col);
           $square.on("mouseover", that.fillPath.bind(that));
         }
         $square.on("mousedown", function () { that.selectPipeColor($square.attr("class")) });
@@ -81,14 +79,28 @@
 
   Game.prototype.fillPath = function fillPath(event) {
     var $square = $(event.currentTarget);
+    var row = parseInt($square.attr("id")[0])
+    var col = parseInt($square.attr("id")[2])
     if (this.selectedPipeColor) {
-      if ($square.hasClass("null")) {
-        $square.removeClass();
-        $square.addClass(this.selectedPipeColor);
-      } else if ($square.hasClass(this.selectedPipeColor)) {
-        $square.removeClass();
-        $square.addClass("null");
+      var adjacentPositions = []
+      Pipes.ADJACENT_POSITIONS.forEach(function(distance) {
+        var adjacent_row = row + distance[0];
+        var adjacent_col = col + distance[1];
+        if (adjacent_row > -1 && adjacent_row < this.size && adjacent_col > -1 && adjacent_col < this.size) {
+          adjacentPositions.push([ adjacent_row, adjacent_col ]);
+        }
+      }.bind(this));
+      console.log(adjacentPositions);
+      if (adjacentPositions.indexOf(this.lastPos) !== -1) {
+        if ($square.hasClass("null")) {
+          $square.removeClass();
+          $square.addClass(this.selectedPipeColor);
+        } else if ($square.hasClass(this.selectedPipeColor)) {
+          $square.removeClass();
+          $square.addClass("null");
+        }
       }
+      this.lastPos = [row, col];
     }
   };
 
