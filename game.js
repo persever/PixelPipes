@@ -55,7 +55,7 @@
       times(size, function(col) {
         var $square = $("<div>").attr("id", row + "-" + col)
         $displayRow.append($square);
-        $square.addClass("empty");
+        $square.addClass("null");
         $square.css("height", frameLength / size);
         $square.css("width", frameLength / size);
         if (!that.board.pipeEndPairs.some(function (pair) {
@@ -63,7 +63,7 @@
           })) {
           $square.on("mouseover", that.fillPath.bind(that));
         }
-        // $square.on("mouseup", that.mouseUp.bind(that));
+        $square.on("mousedown", function () { that.selectPipeColor($square.attr("class")) });
       });
     });
 
@@ -91,6 +91,10 @@
     $victoryModal = $("<div id=\"victory-modal\"><div class=\"text\">You won!</div></div>");
     $victoryModal.append($("<button id=\"quit\">QUIT</button>")).append($("<button id=\"continue\">ANOTHER!</button>"));
     $("body").prepend($("<div id=\"victory-backdrop\"></div>")).prepend($victoryModal);
+    $("#victory-backdrop").on("click", function () {
+      $("#victory-modal").remove(),
+      $("#victory-backdrop").remove();
+    });
   };
 
 })();

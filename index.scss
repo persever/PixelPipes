@@ -67,7 +67,6 @@
   background-color: grey;
   border-radius: 4px;
   border: none;
-  // height: 25px;
   padding: 10px;
   font-size: 15px;
   color: white;
@@ -82,7 +81,7 @@
   background-color: #008BEE;
 }
 
-.empty, .W, .L, .B, .Y, .O {
+.null, .W, .L, .B, .Y, .O {
   display: inline-block;
 }
 

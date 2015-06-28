@@ -21,9 +21,9 @@ PipeEnd.prototype.draw = function draw() {
   $pipeEndSquare.removeClass();
   $pipeEndSquare.addClass(this.color);
   var that = this;
-  (function ($el, color) {
-    $el.on("mousedown", function () { that.board.game.selectPipeColor(color) });
-  })($pipeEndSquare, this.color);
+  // (function ($el, color) {
+  //   $el.on("mousedown", function () { that.board.game.selectPipeColor(color) });
+  // })($pipeEndSquare, this.color);
   (function ($el, color) {
     $el.on("mouseup", function () {
       that.isConnected();
