@@ -87,10 +87,9 @@
         var adjacent_row = row + distance[0];
         var adjacent_col = col + distance[1];
         if (adjacent_row > -1 && adjacent_row < this.size && adjacent_col > -1 && adjacent_col < this.size) {
-          adjacentPositions.push([ adjacent_row, adjacent_col ]);
+          adjacentPositions.push(adjacent_row + "-" + adjacent_col);
         }
       }.bind(this));
-      console.log(adjacentPositions);
       if (adjacentPositions.indexOf(this.lastPos) !== -1) {
         if ($square.hasClass("null")) {
           $square.removeClass();
@@ -100,7 +99,7 @@
           $square.addClass("null");
         }
       }
-      this.lastPos = [row, col];
+      this.lastPos = row + "-" + col;
     }
   };
 
