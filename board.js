@@ -5,6 +5,7 @@
 
   var Board = Pipes.Board = function Board(game, size) {
     this.game = game;
+    this.pipeEndPositions = [];
     this.pipeEndPairs = this.setPipeEndPairs(size);
   };
 
@@ -15,13 +16,14 @@
     }
     var pipeEndPairs = [];
     // make it a hash instead of an array?
-    for (var color in ends) {
+    Object.keys(ends).forEach(function(color) {
       var pipeEnd1 = new Pipes.PipeEnd(
         this,
         [parseInt(ends[color][0][0]), parseInt(ends[color][0][2])],
         color,
         [parseInt(ends[color][1][0]), parseInt(ends[color][1][2])]
       );
+      this.pipeEndPositions.push(parseInt(ends[color][0][0]) + "-" + parseInt(ends[color][0][2]));
       var pipeEnd2 = new Pipes.PipeEnd(
         this,
         [parseInt(ends[color][1][0]), parseInt(ends[color][1][2])],
@@ -29,7 +31,8 @@
         [parseInt(ends[color][0][0]), parseInt(ends[color][0][2])]
       );
       pipeEndPairs.push([pipeEnd1, pipeEnd2]);
-    };
+      this.pipeEndPositions.push(parseInt(ends[color][1][0]) + "-" + parseInt(ends[color][1][2]));
+    }.bind(this));
 
     return pipeEndPairs;
   };

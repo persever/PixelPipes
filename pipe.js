@@ -12,18 +12,11 @@ var PipeEnd = Pipes.PipeEnd = function PipeEnd(board, pos, color, oppositeEndPos
   this.connected = false;
 };
 
-// MAKE GOING OVER FILLED SQUARE OF SELECTED COLOR REMOVE THAT CLASS,
-// AND DO NOTHING TO SQUARES OF OTHER COLORS
-// make the graphics make it obvious that you need to connect to the end (mouse up on the end)
-
 PipeEnd.prototype.draw = function draw() {
   var $pipeEndSquare = $("#" + this.pos[0] + "-" + this.pos[1])
   $pipeEndSquare.removeClass();
   $pipeEndSquare.addClass(this.color);
   var that = this;
-  // (function ($el, color) {
-  //   $el.on("mousedown", function () { that.board.game.selectPipeColor(color) });
-  // })($pipeEndSquare, this.color);
   (function ($el, color) {
     $el.on("mouseup", function () {
       that.isConnected();

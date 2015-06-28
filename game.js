@@ -58,9 +58,9 @@
         $square.addClass("null");
         $square.css("height", frameLength / size);
         $square.css("width", frameLength / size);
-        if (!that.board.pipeEndPairs.some(function (pair) {
-            pair.hasOwnProperty(row + "-" + col);
-          })) {
+        if ($.inArray((row + "-" + col), that.board.pipeEndPositions) === -1) {
+          console.log(that.board.pipeEndPositions);
+          console.log(row + "-" + col);
           $square.on("mouseover", that.fillPath.bind(that));
         }
         $square.on("mousedown", function () { that.selectPipeColor($square.attr("class")) });
@@ -80,9 +80,15 @@
   };
 
   Game.prototype.fillPath = function fillPath(event) {
+    var $square = $(event.currentTarget);
     if (this.selectedPipeColor) {
-      $(event.currentTarget).removeClass();
-      $(event.currentTarget).addClass(this.selectedPipeColor);
+      if ($square.hasClass("null")) {
+        $square.removeClass();
+        $square.addClass(this.selectedPipeColor);
+      } else if ($square.hasClass(this.selectedPipeColor)) {
+        $square.removeClass();
+        $square.addClass("null");
+      }
     }
   };
 
@@ -90,7 +96,7 @@
     // render just in/over #game-canvas!
     $victoryModal = $("<div id=\"victory-modal\"><div class=\"text\">You won!</div></div>");
     $victoryModal.append($("<button id=\"quit\">QUIT</button>")).append($("<button id=\"continue\">ANOTHER!</button>"));
-    $("body").prepend($("<div id=\"victory-backdrop\"></div>")).prepend($victoryModal);
+    $("#game-canvas").prepend($("<div id=\"victory-backdrop\"></div>")).prepend($victoryModal);
     $("#victory-backdrop").on("click", function () {
       $("#victory-modal").remove(),
       $("#victory-backdrop").remove();

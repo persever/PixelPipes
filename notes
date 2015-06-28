@@ -1,0 +1,5 @@
+// MAKE GOING OVER FILLED SQUARE OF SELECTED COLOR REMOVE THAT CLASS,
+// AND DO NOTHING TO SQUARES OF OTHER COLORS
+// make the graphics make it obvious that you need to connect to the end (mouse up on the end)
+
+// responsive resizing should redraw *as is*, not all over again
