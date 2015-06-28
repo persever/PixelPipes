@@ -15,35 +15,20 @@
   };
 
   Game.prototype.isWon = function isWon() {
-    // l and o are the only pipes that don't infinitely loop... only l recognizes connection.... wtf...
-    // this.board.pipeEnds[0].isConnected();
-    // this.board.pipeEnds[2].isConnected();
-    // this.board.pipeEnds[4].isConnected();
-    // this.board.pipeEnds[6].isConnected();
-    // this.board.pipeEnds[8].isConnected();
-
+    var won = true
     this.board.pipeEnds.forEach(function(pipeEnd) {
       // lose the line below, make the graphics make it obvious that you need to connect to the end (mouse up on the end)
-      // unless you don't give a **** about this awful algorithm
-      // make sure you cut down to checking one pipe end
-      pipeEnd.isConnected();
-      console.log(pipeEnd.color + " " + pipeEnd.connected);
+      // make it not check pipe connection front to back and back to front, just store pipe starts separately
+      if (!pipeEnd.isConnected()) {
+       won = false
+      }
     });
-      // console.log("won!");
-    // } else {
-    //   console.log("not won");
-    // }
 
-    // make it not check pipe connection front to back and back to front, just store pipe starts separately
-    // var won = true;
-    // this.board.pipeEnds.forEach(function (pipeEnd){
-    //   if (!pipeEnd.isConnected.call(pipeEnd)) {
-    //     console.log("checking " + pipeEnd.pos);
-    //     won = false;
-    //   }
-    // });
-    // console.log("finished checking all");
-    // return won;
+    if (won) {
+      $("#game-canvas").trigger("won")
+    }
+
+    return won;
   };
 
   Game.prototype.draw = function draw() {
