@@ -10,12 +10,9 @@
   };
 
   Board.prototype.setPipeEndPairs = function setPipeEndPairs(size) {
-    var ends = null
-    if (size === 5) {
-      ends = FIVES[Math.floor(Math.random() * FIVES.length)]; //factor out
-    }
+    // MAKE MULTIPLE AND ALLOW SELECTION?
+    var ends = Board.Sizes[size]
     var pipeEndPairs = [];
-    // make it a hash instead of an array?
     Object.keys(ends).forEach(function(color) {
       var pipeEnd1 = new Pipes.PipeEnd(
         this,
@@ -44,14 +41,60 @@
     })
   };
 
-  var FIVES = [
-    {
-      "L": ["2-2", "0-4"],
-      "B": ["4-0", "2-3"],
-      "W": ["1-3", "4-4"],
-      "O": ["1-0", "3-2"],
-      "Y": ["0-0", "2-1"]
-    }
-  ]
+  // STORE IN A SEPARATE FILE
+
+  Board.Sizes = {
+    "5": Board.FIVES,
+    "6": Board.SIXES,
+    "7": Board.SEVENS,
+    "8": Board.EIGHTS,
+    "9": Board.NINES
+  }
+
+  Board.FIVES = {
+    "a": ["2-2", "0-4"],
+    "b": ["4-0", "2-3"],
+    "c": ["1-3", "4-4"],
+    "d": ["1-0", "3-2"],
+    "e": ["0-0", "2-1"]
+  };
+
+  Board.SIXES = {
+    "a": ["0-1", "4-0"],
+    "b": ["5-5", "2-3"],
+    "c": ["4-5", "1-4"],
+    "d": ["5-0", "1-3"],
+    "e": ["0-2", "2-5"],
+    "f": ["2-2", "5-3"]
+  };
+
+  Board.SEVENS = {
+    "a": ["0-6", "6-0"],
+    "b": ["4-1", "3-5"],
+    "c": ["0-0", "5-5"],
+    "d": ["2-1", "3-2"],
+    "e": ["0-1", "3-3"],
+    "f": ["0-2", "2-5"]
+  };
+
+  Board.EIGHTS = {
+    "a": ["0-1", "5-5"],
+    "b": ["0-0", "4-2"],
+    "c": ["2-5", "4-7"],
+    "d": ["3-0", "6-3"],
+    "e": ["1-1", "3-1"],
+    "f": ["7-0", "6-6"]
+  };
+
+  Board.NINES = {
+    "a": ["5-0", "8-3"],
+    "b": ["3-0", "5-5"],
+    "c": ["0-0", "7-3"],
+    "d": ["7-1", "5-3"],
+    "e": ["4-0", "3-6"],
+    "f": ["7-2", "6-3"],
+    "g": ["2-0", "2-6"],
+    "h": ["1-0", "7-5"]
+  };
 
 })();

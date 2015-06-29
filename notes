@@ -1,1 +1,32 @@
-// responsive resizing should redraw *as is*, not all over again
+make boards
+make selection screen
+
+modal buttons are currently adding more modal/backdrop pairs...
+"another" button route back to home screen
+"quit" button... also back to home screen... ohh, ooh, splash screen!!
+
+splash screen with quick demo of game
+
+new boards, of varied sizes
+home screen select size
+
+make instructions pop up in modal
+button to said modal
+(whole view should just be game canvas, navbar sticking on its right edge, and background)
+font(s)
+basic styling
+
+music
+victory sound
+
+track completed
+cache?
+
+responsive resizing should redraw *as is*, not all over again
+
+dragging sound
+connected sound on a pipe's connection
+
+breaking sound when pipe broken?
+
+play all games to ensure they're set up right

@@ -106,11 +106,23 @@
   Game.prototype.victory = function victory() {
     // render just in/over #game-canvas!
     $victoryModal = $("<div id=\"victory-modal\"><div class=\"text\">You won!</div></div>");
-    $victoryModal.append($("<button id=\"quit\">QUIT</button>")).append($("<button id=\"continue\">ANOTHER!</button>"));
-    $("#game-canvas").prepend($("<div id=\"victory-backdrop\"></div>")).prepend($victoryModal);
+    $quitButton = $("<button id=\"quit\">QUIT</button>");
+    // make these different! quit should go to splash screen!
+    $quitButton.on("click", function () {
+      $("#game-canvas").remove();
+      new Pipes.GameView().choose();
+    });
+    $continueButton = $("<button id=\"continue\">ANOTHER!</button>");
+    $continueButton.on("click", function () {
+      $("#game-canvas").remove();
+      new Pipes.GameView().choose();
+    });
+    $victoryModal.append($quitButton).append($continueButton);
+    $("#game-canvas").prepend($("<div id=\"victory-backdrop\"></div>"))
+                     .prepend($victoryModal);
     $("#victory-backdrop").on("click", function () {
-      $("#victory-modal").remove(),
-      $("#victory-backdrop").remove();
+      $("#victory-modal").remove();
+      $("#victory-backdrop").remove();``
     });
   };
 

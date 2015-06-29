@@ -29,12 +29,9 @@
     <script src="./gameView.js"></script>
 
     <script>
-      $(function() {
-        var game = new Pipes.Game();
-        setTimeout(function() {
-          game.draw();
-        }, 0);
-      })
+        (function() {
+          new Pipes.GameView().choose();
+        })();
     </script>
   </body>
 </html>

@@ -30,6 +30,10 @@
   background-color: black;
 }
 
+#selection {
+  
+}
+
 #game-canvas .row {
   display: block;
 }
@@ -49,7 +53,7 @@
   padding: 20px;
   text-align: center;
   z-index: 101;
-  border-radius: 2px;
+  // border-radius: 4px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -63,42 +67,85 @@
 #victory-modal button {
   margin: 10px;
   background-color: grey;
-  border-radius: 4px;
+  // border-radius: 4px;
   border: none;
   padding: 10px;
   font-size: 15px;
   color: white;
   text-align: center;
+
+  // margin: 10px;
+  // background: none;
+  // /* border-radius: 4px; */
+  // border: 2px solid black;
+  // padding: 10px;
+  // font-size: 15px;
+  // color: black;
+  // text-align: center;
 }
 
 #victory-modal #quit {
   background-color: black;
+
+  // border: 2px solid black;
+  // color: black;
 }
 
 #victory-modal #continue {
   background-color: #008BEE;
+
+  // border: 2px solid #008BEE;
+  // color: #008BEE;
 }
 
-.null, .W, .L, .B, .Y, .O {
+.null, .a, .b, .c, .d, .e, .f, .g {
   display: inline-block;
 }
 
-.W {
-  background-color: #99D3FC;
-}
-
-.L {
-  background-color: #008BEE;
-}
-
-.B {
-  background-color: #2100F1;
-}
-
-.Y {
+.a {
   background-color: #FFCA00;
 }
 
-.O {
-  background-color: #FF9000;
+.b {
+  background-color: #01D8E2;
 }
+
+.c {
+  background-color: #381CE9;
+}
+
+.d {
+  background-color: #FF7600;
+}
+
+.e {
+  background-color: #FFDE5F;
+}
+
+.f {
+  background-color: #57E1E7;
+}
+
+.g {
+  background-color: #7D6BEC;
+}
+
+// .h {
+//   background-color: #FFA95F;
+// }
+
+// .i {
+//   background-color: #DFB100;
+// }
+
+// .j {
+//   background-color: #1C089B;
+// }
+
+// .k {
+//   background-color: #008187;
+// }
+
+// .l {
+//   background-color: #DF6700;
+// }
