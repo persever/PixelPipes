@@ -27,6 +27,10 @@ responsive resizing should redraw *as is*, not all over again
 dragging sound
 connected sound on a pipe's connection
 
+button to clear board
+
 breaking sound when pipe broken?
 
 play all games to ensure they're set up right
+
+make sure both github branches are up to date -- just destroy master

@@ -109,12 +109,12 @@
     $quitButton = $("<button id=\"quit\">QUIT</button>");
     // make these different! quit should go to splash screen!
     $quitButton.on("click", function () {
-      $("#game-canvas").remove();
+      $("#game-canvas").empty();
       new Pipes.GameView().choose();
     });
     $continueButton = $("<button id=\"continue\">ANOTHER!</button>");
     $continueButton.on("click", function () {
-      $("#game-canvas").remove();
+      $("#game-canvas").empty();
       new Pipes.GameView().choose();
     });
     $victoryModal.append($quitButton).append($continueButton);

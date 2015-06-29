@@ -11,7 +11,7 @@ GameView.prototype.choose = function choose() {
   var that = this;
   Object.keys(Pipes.Board.Sizes).forEach(function(size) {
     $button = $("<button>").append(size + "x" + size);
-    $button.on("click", function () { that.start(Pipes.Board.Sizes[size]) });
+    $button.on("click", function () { that.start(size) });
     $selection.append($button);
   })
   $("#game-canvas").append($selection);
