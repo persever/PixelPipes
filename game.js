@@ -23,7 +23,7 @@
       }
     });
 
-    if (won) {
+    if (won && !$("#victory-modal")[0]) {
       $("#game-canvas").trigger("won")
     }
 
@@ -39,8 +39,8 @@
     if ($(window).width() < $(window).height()) {
       frameLength = $(window).width();
     };
-    frameLength -= 200;
-    frameLength = (frameLength < 300) ? 300 : Math.floor(frameLength);
+    frameLength -= 300;
+    frameLength = (frameLength < 200) ? 200 : Math.floor(frameLength);
     this.$canvas.css("height", frameLength);
     this.$canvas.css("width", frameLength);
 
@@ -104,26 +104,29 @@
   };
 
   Game.prototype.victory = function victory() {
-    // render just in/over #game-canvas!
     $victoryModal = $("<div id=\"victory-modal\"><div class=\"text\">You won!</div></div>");
-    $quitButton = $("<button id=\"quit\">QUIT</button>");
+
+    $victoryBackdrop = $("<div id=\"victory-backdrop\"></div>");
+    $victoryBackdrop.on("click", function () {
+      $("#victory-modal").remove();
+      $("#victory-backdrop").remove();
+    });
+
     // make these different! quit should go to splash screen!
+    $quitButton = $("<button id=\"quit\">QUIT</button>");
     $quitButton.on("click", function () {
       $("#game-canvas").empty();
       new Pipes.GameView().choose();
     });
+
     $continueButton = $("<button id=\"continue\">ANOTHER!</button>");
     $continueButton.on("click", function () {
       $("#game-canvas").empty();
       new Pipes.GameView().choose();
     });
+
     $victoryModal.append($quitButton).append($continueButton);
-    $("#game-canvas").prepend($("<div id=\"victory-backdrop\"></div>"))
-                     .prepend($victoryModal);
-    $("#victory-backdrop").on("click", function () {
-      $("#victory-modal").remove();
-      $("#victory-backdrop").remove();``
-    });
+    $("#game-canvas").prepend($victoryBackdrop).prepend($victoryModal);
   };
 
 })();

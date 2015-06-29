@@ -1,9 +1,4 @@
-make boards
-make selection screen
-
-modal buttons are currently adding more modal/backdrop pairs...
-"another" button route back to home screen
-"quit" button... also back to home screen... ohh, ooh, splash screen!!
+handle the infinite loop!! make array of checked positions, instead of just last position!!
 
 splash screen with quick demo of game
 
@@ -31,6 +26,10 @@ button to clear board
 
 breaking sound when pipe broken?
 
-play all games to ensure they're set up right
+play all games to ensure they're set up right (and win is triggered)
+
+better handle of mouseup....?
 
 make sure both github branches are up to date -- just destroy master
+
+colors
