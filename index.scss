@@ -38,7 +38,7 @@
   display: block;
 }
 
-#victory-backdrop {
+.victory-backdrop {
   position: absolute;
   background-color: rgba(0, 0, 0, .5);
   height: 100%;
@@ -47,7 +47,7 @@
   text-align: center;
 }
 
-#victory-modal {
+.victory-modal {
   position: absolute;
   background-color: white;
   padding: 20px;
@@ -59,12 +59,12 @@
   transform: translate(-50%, -50%);
 }
 
-#victory-modal .text {
+.victory-modal .text {
   font-size: 20px;
   padding: 20px;
 }
 
-#victory-modal button {
+.victory-modal button {
   margin: 10px;
   background-color: grey;
   // border-radius: 4px;
@@ -84,19 +84,19 @@
   // text-align: center;
 }
 
-#victory-modal #quit {
+.victory-modal .quit {
   background-color: black;
 
   // border: 2px solid black;
   // color: black;
 }
 
-#victory-modal #continue {
-  background-color: #008BEE;
-
-  // border: 2px solid #008BEE;
-  // color: #008BEE;
-}
+// .victory-modal .continue {
+//   background-color: #008BEE;
+//
+//   // border: 2px solid #008BEE;
+//   // color: #008BEE;
+// }
 
 .null, .a, .b, .c, .d, .e, .f, .g {
   display: inline-block;

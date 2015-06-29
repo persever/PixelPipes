@@ -23,7 +23,7 @@
       }
     });
 
-    if (won && !$("#victory-modal")[0]) {
+    if (won && !$(".victory-modal")[0]) {
       $("#game-canvas").trigger("won")
     }
 
@@ -104,28 +104,32 @@
   };
 
   Game.prototype.victory = function victory() {
-    $victoryModal = $("<div id=\"victory-modal\"><div class=\"text\">You won!</div></div>");
-
-    $victoryBackdrop = $("<div id=\"victory-backdrop\"></div>");
+    $victoryBackdrop = $("<div>").addClass("victory-backdrop");
     $victoryBackdrop.on("click", function () {
-      $("#victory-modal").remove();
-      $("#victory-backdrop").remove();
+      $(".victory-modal").remove();
+      $(".victory-backdrop").remove();
     });
 
+    $victoryModal = $("<div>").addClass("victory-modal");
+
+    $congrats = $("<div>").addClass("text").text("You won!");
+
     // make these different! quit should go to splash screen!
-    $quitButton = $("<button id=\"quit\">QUIT</button>");
+    $quitButton = $("<button>").addClass("quit").text("QUIT");
     $quitButton.on("click", function () {
       $("#game-canvas").empty();
       new Pipes.GameView().choose();
     });
 
-    $continueButton = $("<button id=\"continue\">ANOTHER!</button>");
+    $continueButton = $("<button>").addClass("continue").text("ANOTHER!");
+    var color = Pipes.Colors[Math.floor(Math.random()*10 % Pipes.Colors.length)];
+    $continueButton.css("background-color", color)
     $continueButton.on("click", function () {
       $("#game-canvas").empty();
       new Pipes.GameView().choose();
     });
 
-    $victoryModal.append($quitButton).append($continueButton);
+    $victoryModal.append($congrats).append($quitButton).append($continueButton);
     $("#game-canvas").prepend($victoryBackdrop).prepend($victoryModal);
   };
 
