@@ -25,6 +25,10 @@
           <button class="quit">QUIT</button>
           <button class="continue">CONTINUE</button>
         </div>
+        <div id="selection">
+          <div class="heading">Select a board size.</div>
+          <div class="buttons"></div>
+        </div>
         <div id="game-canvas"></div>
       </div>
     </div>
@@ -38,7 +42,7 @@
 
     <script>
         (function() {
-          new Pipes.GameView().choose();
+          new Pipes.GameView();
         })();
     </script>
   </body>

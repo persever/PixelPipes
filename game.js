@@ -4,8 +4,9 @@
   };
 
 // take in optional grid size
-  var Game = Pipes.Game = function Game(sizeOption) {
+  var Game = Pipes.Game = function Game(sizeOption, frameLength) {
     this.size = sizeOption || 5;
+    this.frameLength = frameLength;
     this.board = new Pipes.Board(this, this.size);
     this.selectedPipeColor = null;
     // $(window).on("resize", this.draw.bind(this));
@@ -31,31 +32,20 @@
   Game.prototype.draw = function draw() {
     $("#game-canvas").empty();
 
-    // factor sizing out into separate method?
-
-    var frameLength = $(window).height();
-    if ($(window).width() < $(window).height()) {
-      frameLength = $(window).width();
-    };
-    frameLength -= 300;
-    frameLength = (frameLength < 200) ? 200 : Math.floor(frameLength);
-    $("#game-container").css("height", frameLength);
-    $("#game-container").css("width", frameLength);
-
     var size = this.size;
     var that = this;
     times(size, function(row) {
       var $displayRow = $("<div>").attr("data-row", row)
-      $displayRow.css("height", frameLength / size )
-      $displayRow.css("width", frameLength)
+      $displayRow.css("height", that.frameLength / size )
+      $displayRow.css("width", that.frameLength)
       $displayRow.addClass("row");
       $("#game-canvas").append($displayRow);
       times(size, function(col) {
         var $square = $("<div>").attr("id", row + "-" + col)
         $displayRow.append($square);
         $square.addClass("null");
-        $square.css("height", frameLength / size);
-        $square.css("width", frameLength / size);
+        $square.css("height", that.frameLength / size);
+        $square.css("width", that.frameLength / size);
         if ($.inArray((row + "-" + col), that.board.pipeEndPositions) === -1) {
           $square.on("mouseover", that.fillPath.bind(that));
         }
@@ -115,7 +105,8 @@
       $(".victory-modal").addClass("hidden");
       $(".victory-backdrop").addClass("hidden");
       $("#game-canvas").empty();
-      new Pipes.GameView().choose();
+      $("#selection").removeClass("hidden");
+      // new Pipes.GameView();
     });
 
     var color = Pipes.Colors[Math.floor(Math.random()*10 % Pipes.Colors.length)];
@@ -124,7 +115,8 @@
       $(".victory-modal").addClass("hidden");
       $(".victory-backdrop").addClass("hidden");
       $("#game-canvas").empty();
-      new Pipes.GameView().choose();
+      $("#selection").removeClass("hidden");
+      // new Pipes.GameView();
     });
   };
 
