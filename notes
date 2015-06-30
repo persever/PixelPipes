@@ -1,5 +1,9 @@
 styling
 
+FIX THOSE UNBOUND SQUARES...
+
+signify ends
+
 splash screen with quick demo of game
 
 make instructions pop up in modal
@@ -24,8 +28,6 @@ button to clear board
 breaking sound when pipe broken?
 
 play all games to ensure they're set up right (and win is triggered)
-
-better handle of mouseup....?
 
 make sure both github branches are up to date -- just destroy master
 

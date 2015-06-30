@@ -6,9 +6,15 @@ if ( window.Pipes === undefined ) {
 
 var GameView = Pipes.GameView = function GameView() {
   this.size();
+  var color = Pipes.Colors[Math.floor(Math.random()*10 % Pipes.Colors.length)];
+  $("#title").css("color", color)
+  $(window).on("resize", this.size.bind(this));
 };
 
 GameView.prototype.size = function size() {
+  $("body").css("height", $(window).height());
+  $("body").css("width", $(window).width());
+
   this.frameLength = $(window).height();
   if ($(window).width() < $(window).height()) {
     this.frameLength = $(window).width();

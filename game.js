@@ -8,7 +8,6 @@
     this.frameLength = frameLength;
     this.board = new Pipes.Board(this, this.size);
     this.selectedPipeColor = null;
-    // $(window).on("resize", this.draw.bind(this));
     $("#game-canvas").on("won", this.victory.bind(this))
     $("#game-canvas").on("mouseup", this.mouseUp.bind(this))
   };
