@@ -27,27 +27,17 @@ PipeEnd.prototype.draw = function draw() {
 PipeEnd.prototype.isConnected = function isConnected(pos, checkedPositions) {
   var pos = pos || this.pos;
   var checkedPositions = checkedPositions || [];
+  var adjacent = this.adjacentTile(pos, checkedPositions);
   if ("" + pos + "" === "" + this.oppositeEndPos + "") {
     this.connected = true;
-  } else if (!this.hasAdjacentTile(pos, checkedPositions)) {
+  } else if (!adjacent) {
     this.connected = false;
   } else {
-    var newPos = this.adjacentTile(pos, checkedPositions);
     checkedPositions.push("" + pos + "")
-    this.isConnected(newPos, checkedPositions);
+    this.isConnected(adjacent, checkedPositions);
   }
 
   return this.connected;
-};
-
-PipeEnd.prototype.hasAdjacentTile = function hasAdjacentTile(currentPos, checkedPositions) {
-  // please refactor so you're not calling that function twice when true
-  // just test truthiness of return value of main function
-  if (this.adjacentTile(currentPos, checkedPositions)) {
-    return true;
-  } else {
-    return false;
-  }
 };
 
 PipeEnd.prototype.adjacentTile = function adjacentTile(currentPos, checkedPositions) {
