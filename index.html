@@ -18,7 +18,15 @@
     <div id="content">
       <div id="heading">Pixel Pipes</div>
       <div id="subheading">Connect all the pipes!</div>
-      <div id="game-canvas"></div>
+      <div id="game-container">
+        <div class="victory-backdrop hidden"></div>
+        <div class="victory-modal hidden">
+          <div class="text">You won!</div>
+          <button class="quit">QUIT</button>
+          <button class="continue">CONTINUE</button>
+        </div>
+        <div id="game-canvas"></div>
+      </div>
     </div>
 
     <script src="./jquery-2.1.4.min.js"></script>

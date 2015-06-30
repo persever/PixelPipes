@@ -7,7 +7,6 @@
   var Game = Pipes.Game = function Game(sizeOption) {
     this.size = sizeOption || 5;
     this.board = new Pipes.Board(this, this.size);
-    this.$canvas = $("#game-canvas");
     this.selectedPipeColor = null;
     // $(window).on("resize", this.draw.bind(this));
     $("#game-canvas").on("won", this.victory.bind(this))
@@ -22,8 +21,7 @@
        won = false
       }
     });
-
-    if (won && !$(".victory-modal")[0]) {
+    if (won && $(".victory-modal").hasClass("hidden")) {
       $("#game-canvas").trigger("won")
     }
 
@@ -31,7 +29,7 @@
   };
 
   Game.prototype.draw = function draw() {
-    this.$canvas.empty();
+    $("#game-canvas").empty();
 
     // factor sizing out into separate method?
 
@@ -41,8 +39,8 @@
     };
     frameLength -= 300;
     frameLength = (frameLength < 200) ? 200 : Math.floor(frameLength);
-    this.$canvas.css("height", frameLength);
-    this.$canvas.css("width", frameLength);
+    $("#game-container").css("height", frameLength);
+    $("#game-container").css("width", frameLength);
 
     var size = this.size;
     var that = this;
@@ -51,7 +49,7 @@
       $displayRow.css("height", frameLength / size )
       $displayRow.css("width", frameLength)
       $displayRow.addClass("row");
-      that.$canvas.append($displayRow);
+      $("#game-canvas").append($displayRow);
       times(size, function(col) {
         var $square = $("<div>").attr("id", row + "-" + col)
         $displayRow.append($square);
@@ -104,33 +102,30 @@
   };
 
   Game.prototype.victory = function victory() {
-    $victoryBackdrop = $("<div>").addClass("victory-backdrop");
-    $victoryBackdrop.on("click", function () {
-      $(".victory-modal").remove();
-      $(".victory-backdrop").remove();
+    $(".victory-modal").removeClass("hidden");
+    $(".victory-backdrop").removeClass("hidden");
+
+    $(".victory-backdrop").on("click", function () {
+      $(".victory-modal").addClass("hidden");
+      $(".victory-backdrop").addClass("hidden");
     });
-
-    $victoryModal = $("<div>").addClass("victory-modal");
-
-    $congrats = $("<div>").addClass("text").text("You won!");
 
     // make these different! quit should go to splash screen!
-    $quitButton = $("<button>").addClass("quit").text("QUIT");
-    $quitButton.on("click", function () {
+    $("button.quit").on("click", function () {
+      $(".victory-modal").addClass("hidden");
+      $(".victory-backdrop").addClass("hidden");
       $("#game-canvas").empty();
       new Pipes.GameView().choose();
     });
 
-    $continueButton = $("<button>").addClass("continue").text("ANOTHER!");
     var color = Pipes.Colors[Math.floor(Math.random()*10 % Pipes.Colors.length)];
-    $continueButton.css("background-color", color)
-    $continueButton.on("click", function () {
+    $("button.continue").css("background-color", color)
+    $("button.continue").on("click", function () {
+      $(".victory-modal").addClass("hidden");
+      $(".victory-backdrop").addClass("hidden");
       $("#game-canvas").empty();
       new Pipes.GameView().choose();
     });
-
-    $victoryModal.append($congrats).append($quitButton).append($continueButton);
-    $("#game-canvas").prepend($victoryBackdrop).prepend($victoryModal);
   };
 
 })();

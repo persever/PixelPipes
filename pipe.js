@@ -24,41 +24,40 @@ PipeEnd.prototype.draw = function draw() {
   })($pipeEndSquare);
 };
 
-PipeEnd.prototype.isConnected = function isConnected(pos, lastPos) {
+PipeEnd.prototype.isConnected = function isConnected(pos, checkedPositions) {
   var pos = pos || this.pos;
-  // is this missing some of the middle tiles??
-  // in util, make array comparing function
+  var checkedPositions = checkedPositions || [];
   if ("" + pos + "" === "" + this.oppositeEndPos + "") {
     this.connected = true;
-  } else if (!this.hasAdjacentTile(pos, lastPos)) {
+  } else if (!this.hasAdjacentTile(pos, checkedPositions)) {
     this.connected = false;
   } else {
-    var newPos = this.adjacentTile(pos, lastPos);
-    this.isConnected(newPos, pos);
+    var newPos = this.adjacentTile(pos, checkedPositions);
+    checkedPositions.push("" + pos + "")
+    this.isConnected(newPos, checkedPositions);
   }
 
   return this.connected;
 };
 
-PipeEnd.prototype.hasAdjacentTile = function hasAdjacentTile(currentPos, lastPos) {
+PipeEnd.prototype.hasAdjacentTile = function hasAdjacentTile(currentPos, checkedPositions) {
   // please refactor so you're not calling that function twice when true
   // just test truthiness of return value of main function
-  if (this.adjacentTile(currentPos, lastPos)) {
+  if (this.adjacentTile(currentPos, checkedPositions)) {
     return true;
   } else {
     return false;
   }
 };
 
-PipeEnd.prototype.adjacentTile = function adjacentTile(currentPos, lastPos) {
+PipeEnd.prototype.adjacentTile = function adjacentTile(currentPos, checkedPositions) {
   var adjacentPositions = [];
   Pipes.ADJACENT_POSITIONS.forEach(function(distance) {
     adjacentPositions.push([ currentPos[0] + distance[0], currentPos[1] + distance[1] ]);
   });
   var tile = null;
   adjacentPositions.forEach(function(adjacentPos) {
-// instead of lastPos, track checked positions in case of multiple adjacent (for whether you make it to fill requirement or just need to prevent infinite loop when user fills multiple adjacent)
-    if ("" + adjacentPos + "" !== "" + lastPos + "") {
+    if (checkedPositions.indexOf("" + adjacentPos + "") === -1) {
       var $square = $("#" + adjacentPos[0] + "-" + adjacentPos[1])
       if ($square.hasClass(this.color)) {
         tile = adjacentPos;
