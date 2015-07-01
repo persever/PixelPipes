@@ -56,8 +56,13 @@
         $square.css("width", that.frameLength / size - 2);
         if ($.inArray((row + "-" + col), that.pipeEndPositions) === -1) {
           $square.on("mouseover", that.game.fillPath.bind(that.game));
+          $square.on("touchmove", that.game.fillPath.bind(that.game));
         }
-        $square.on("mousedown", function () { that.game.selectPipeColor($square.attr("class")) });
+        var click = function () {
+          that.game.selectPipeColor($square.attr("class"))
+        };
+        $square.on("mousedown", click);
+        $square.on("touchstart", click);
         $displayRow.append($square);
       });
     });

@@ -25,9 +25,8 @@ PipeEnd.prototype.draw = function draw() {
                      "inset 0px 0px 0px " + borderWidth + "px " + borderColor);
   var that = this;
   (function ($el, color) {
-    $el.on("mouseup", function () {
-      that.isConnected();
-    });
+    $el.on("mouseup", function () { that.isConnected(); });
+    $el.on("touchend", function () { that.isConnected(); });
   })($pipeEndSquare);
 };
 
