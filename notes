@@ -32,3 +32,5 @@ make sure both github branches are up to date -- just destroy master
 colors
 
 see notes throughout
+
+remove that extra bottom pixel in the game container

@@ -7,6 +7,7 @@
   user-select: none;
 
   font-family: "pixelicious";
+  cursor: default;
 }
 
 @font-face {
@@ -26,22 +27,24 @@ body {
 }
 
 #title {
-  transform: rotate(-15deg);
-  position: absolute;
-  z-index: 1;
-  top: -140px;
-  left: -130px;
+  cursor: pointer;
+  // transform: rotate(-15deg);
+  // position: absolute;
+  // z-index: 1;
+  // top: -140px;
+  // left: -130px;
   margin: 0 auto;
   font-size: 50px;
   text-align: center;
 }
 
 #subtitle {
-  transform: rotate(-15deg);
-  position: absolute;
-  z-index: 1;
-  top: -70px;
-  left: -118px;
+  cursor: pointer;
+  // transform: rotate(-15deg);
+  // position: absolute;
+  // z-index: 1;
+  // top: -70px;
+  // left: -118px;
   margin: 0 auto;
   font-size: 20px;
   color: white;
@@ -83,7 +86,12 @@ body {
 }
 
 #selection button {
+  cursor: pointer;
   margin: 4px;
+  background: none;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
 }
 
 #game-canvas {
