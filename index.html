@@ -44,7 +44,14 @@
 
     <script>
         (function() {
-          new Pipes.GameView();
+          window.gameView = new Pipes.GameView();
+          $("#title").on("click", function () {
+            delete gameView;
+            $("#selection").removeClass("hidden");
+            $(".buttons").empty();
+            $("#game-canvas").empty();
+            window.gameView = new Pipes.GameView();
+          });
         })();
     </script>
   </body>
