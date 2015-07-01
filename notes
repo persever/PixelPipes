@@ -31,8 +31,4 @@ play all games to ensure they're set up right (and win is triggered)
 
 make sure both github branches are up to date -- just destroy master
 
-colors
-
 see notes throughout
-
-remove that extra bottom pixel in the game container

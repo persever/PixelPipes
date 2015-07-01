@@ -50,7 +50,7 @@
       $("#game-canvas").append($displayRow);
       times(size, function(col) {
         var $square = $("<div>").attr("id", row + "-" + col)
-        $displayRow.append($square);
+        $square.attr("data-type", "square");
         $square.addClass("null");
         $square.css("height", that.frameLength / size - 2);
         $square.css("width", that.frameLength / size - 2);
@@ -58,10 +58,23 @@
           $square.on("mouseover", that.game.fillPath.bind(that.game));
         }
         $square.on("mousedown", function () { that.game.selectPipeColor($square.attr("class")) });
+        $displayRow.append($square);
       });
     });
 
     this.drawPipeEnds();
+  };
+
+  Board.prototype.reDraw = function reDraw(frameLength) {
+    var size = this.size;
+    var that = this;
+    times(size, function(row) {
+      var squareHeight = (frameLength / size);
+      $(".row").css("height", squareHeight)
+      $(".row").css("width", frameLength)
+      $("[data-type=\"square\"]").css("height", frameLength / size - 2);
+      $("[data-type=\"square\"]").css("width", frameLength / size - 2);
+    });
   };
 
   Board.prototype.drawPipeEnds = function drawPipeEnds() {

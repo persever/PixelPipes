@@ -56,24 +56,6 @@
       $(".victory-modal").addClass("hidden");
       $(".victory-backdrop").addClass("hidden");
     });
-
-    // // make these different! quit should go to splash screen!
-    // $("button.quit").on("click", function () {
-    //   delete gameView;
-    //   $("#selection").removeClass("hidden");
-    //   $(".buttons").empty();
-    //   $("#game-canvas").empty();
-    //   window.gameView = new Pipes.GameView();
-    // });
-    //
-    // var color = Pipes.Colors[Math.floor(Math.random()*10 % Pipes.Colors.length)];
-    // $("button.continue").css("background-color", color)
-    // $("button.continue").on("click", function () {
-    //   $(".victory-modal").addClass("hidden");
-    //   $(".victory-backdrop").addClass("hidden");
-    //   $("#game-canvas").empty();
-    //   $("#selection").removeClass("hidden");
-    // });
   };
 
 })();
