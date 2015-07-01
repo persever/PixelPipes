@@ -16,19 +16,19 @@
 
   <body>
     <div id="content">
-      <div id="title-container">
-        <div id="title">PIXEL PIPES</div>
-        <div id="subtitle">Connect all the pipes!</div>
-      </div>
       <div id="game-container">
         <div class="victory-backdrop hidden"></div>
         <div class="victory-modal hidden">
-          <div class="text">You won!</div>
+          <div class="text">You did it!</div>
           <button class="quit">QUIT</button>
           <button class="continue">CONTINUE</button>
         </div>
         <div class="container">
-          <div id="selection">
+          <div id="title-container">
+            <div id="title">PIXEL PIPES</div>
+            <div id="subtitle">Connect all the pipes!</div>
+          </div>
+          <div id="selection" class="hidden">
             <div class="heading">Select a board size.</div>
             <div class="buttons"></div>
           </div>
@@ -46,21 +46,36 @@
 
     <script>
         (function() {
-          var reset = function () {
+          window.gameView = new Pipes.GameView();
+
+          var play = function () {
+            $("#title-container").addClass("hidden");
+            $("#selection").removeClass("hidden");
+          };
+          var restart = function () {
             delete gameView;
             if (!$(".victory-modal").hasClass("hidden")){
               $(".victory-modal").addClass("hidden");
               $(".victory-backdrop").addClass("hidden");
             }
-            $("#selection").removeClass("hidden");
+            $("#selection").addClass("hidden");
             $(".buttons").empty();
             $("#game-canvas").empty();
+            $("#title-container").removeClass("hidden");
             window.gameView = new Pipes.GameView();
           };
-          window.gameView = new Pipes.GameView();
-          $("#title-container").on("click", reset);
-          $("button.quit").on("click", reset);
-          $("button.continue").on("click", reset);
+          var newGame = function () {
+            if (!$(".victory-modal").hasClass("hidden")){
+              $(".victory-modal").addClass("hidden");
+              $(".victory-backdrop").addClass("hidden");
+            }
+            $("#selection").removeClass("hidden");
+            $("#game-canvas").empty();
+          };
+
+          $("#title-container").on("click", play);
+          $("button.quit").on("click", restart);
+          $("button.continue").on("click", newGame);
         })();
     </script>
   </body>

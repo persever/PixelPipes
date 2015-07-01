@@ -26,36 +26,36 @@ body {
   position: relative;
 }
 
+#title-container {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
 #title {
   cursor: pointer;
-  // transform: rotate(-15deg);
-  // position: absolute;
-  // z-index: 1;
-  // top: -140px;
-  // left: -130px;
   margin: 0 auto;
-  font-size: 50px;
   text-align: center;
+  font-size: 5vw;
 }
 
 #subtitle {
   cursor: pointer;
-  // transform: rotate(-15deg);
-  // position: absolute;
-  // z-index: 1;
-  // top: -70px;
-  // left: -118px;
   margin: 0 auto;
   font-size: 20px;
   color: white;
   text-align: center;
+  font-size: 2.6vw;
 }
 
 #game-container {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, calc(-50% + 60px));
+  transform: translate(-50%, -50%);
 }
 
 .container {
@@ -118,7 +118,6 @@ body {
   padding: 20px;
   text-align: center;
   z-index: 101;
-  // border-radius: 4px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -138,39 +137,17 @@ body {
 .victory-modal button {
   margin: 10px;
   background-color: grey;
-  // border-radius: 4px;
   border: none;
   padding: 10px;
   font-size: 15px;
   color: white;
   text-align: center;
-
-  // margin: 10px;
-  // background: none;
-  // /* border-radius: 4px; */
-  // border: 2px solid black;
-  // padding: 10px;
-  // font-size: 15px;
-  // color: black;
-  // text-align: center;
 }
 
 .victory-modal .quit {
   background-color: black;
-
-  // border: 2px solid black;
-  // color: black;
 }
-
-// .victory-modal .continue {
-//   background-color: #008BEE;
-//
-//   // border: 2px solid #008BEE;
-//   // color: #008BEE;
-// }
-
 .null, .a, .b, .c, .d, .e, .f, .g {
-  // display: inline-block;
   float: left;
   margin: 1px;
 }
@@ -206,19 +183,3 @@ body {
 .h {
   background-color: #FF3F95;
 }
-
-// .i {
-//   background-color: #;
-// }
-
-// .j {
-//   background-color: #;
-// }
-
-// .k {
-//   background-color: #;
-// }
-
-// .l {
-//   background-color: #;
-// }
