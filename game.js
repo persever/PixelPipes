@@ -10,7 +10,7 @@
     this.selectedPipeColor = null;
     $("#game-canvas").on("won", this.victory.bind(this))
     $("#game-canvas").on("mouseup", this.mouseUp.bind(this))
-    $("#game-canvas").on("touchend", this.mouseUp.bind(this))
+    // $("#game-canvas").on("touchend", this.mouseUp.bind(this))
   };
 
   Game.prototype.isWon = function isWon() {

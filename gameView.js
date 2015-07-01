@@ -10,6 +10,8 @@ var GameView = Pipes.GameView = function GameView() {
   this.size();
   this.addButtons();
   $("#title").css("color", this.color);
+  $("#navigation button").css("color", this.color);
+  $("#navigation button").css("border", "2px solid " + this.color);
   $("button.continue").css("background-color", this.color);
   $("#game-container").css("box-shadow",
                            "0px 0px 0px 1px black, 0px 0px 0px 3px" + this.color);
@@ -44,14 +46,19 @@ GameView.prototype.setFrameLength = function setFrameLength() {
   if ($(window).width() < $(window).height()) {
     this.frameLength = $(window).width();
   };
-  this.frameLength = (this.frameLength * 0.9);
-  this.frameLength = Math.floor(this.frameLength)
+  this.frameLength = (this.frameLength * 0.8);
+  if (this.frameLength > 500) {
+    this.frameLength = 500;
+  } else {
+    this.frameLength = Math.floor(this.frameLength);
+  }
 };
 
 GameView.prototype.size = function size() {
   $("#game-container").css("height", this.frameLength);
   $("#game-container").css("width", this.frameLength);
   $("#title-container").css("width", this.frameLength);
+  $("#navigation").css("padding-top", this.frameLength / 10);
 };
 
 GameView.prototype.start = function start(size) {

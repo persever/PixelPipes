@@ -16,9 +16,6 @@
   src: url("Pixelicious.ttf") format("truetype");
 }
 
-/*body {
-}*/
-
 #content-backdrop {
   background-color: black;
   top: 0;
@@ -59,12 +56,28 @@
   font-size: 2.6vw;
 }
 
-#game-container {
+#game-and-nav-container {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  /*float: left;*/
 }
+
+#game-container {
+  /*position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);*/
+}
+
+/*.game-container-container {
+  position: relative;
+  height: 100%;
+  /* make it responsive... */
+  /*width: calc(100% - 50px);*/
+  /*float: left;*/
+}*/
 
 .container {
   position: relative;
@@ -110,6 +123,28 @@
 
 #game-canvas .row {
   display: block;
+}
+
+[data-end="true"] {
+  cursor: pointer;
+}
+
+#navigation {
+  text-align: center;
+}
+
+#navigation button {
+  cursor: pointer;
+  display: inline-block;
+  margin: 2px;
+  padding: 10px;
+  font-size: 15px;
+  background: none !important;
+}
+
+#navigation button.reset {
+  color: white !important;
+  border: 2px solid white !important;
 }
 
 .victory-backdrop {
