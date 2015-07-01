@@ -162,8 +162,9 @@ body {
 // }
 
 .null, .a, .b, .c, .d, .e, .f, .g {
-  display: inline-block;
-  // margin: 1px;
+  // display: inline-block;
+  float: left;
+  margin: 1px;
 }
 
 .a {
@@ -194,9 +195,9 @@ body {
   background-color: #2A659B;
 }
 
-// .h {
-//   background-color: #FF3F95;
-// }
+.h {
+  background-color: #FF3F95;
+}
 
 // .i {
 //   background-color: #;

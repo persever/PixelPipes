@@ -44,7 +44,6 @@
     times(size, function(row) {
       var $displayRow = $("<div>").attr("data-row", row)
       var squareHeight = (that.frameLength / size);
-      // squareHeight -= 4;
       $displayRow.css("height", squareHeight)
       $displayRow.css("width", that.frameLength)
       $displayRow.addClass("row");
@@ -53,8 +52,8 @@
         var $square = $("<div>").attr("id", row + "-" + col)
         $displayRow.append($square);
         $square.addClass("null");
-        $square.css("height", that.frameLength / size);
-        $square.css("width", that.frameLength / size);
+        $square.css("height", that.frameLength / size - 2);
+        $square.css("width", that.frameLength / size - 2);
         if ($.inArray((row + "-" + col), that.pipeEndPositions) === -1) {
           $square.on("mouseover", that.game.fillPath.bind(that.game));
         }
