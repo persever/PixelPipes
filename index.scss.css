@@ -6,14 +6,14 @@
   -ms-user-select: none;
   user-select: none;
 
-  font-family: "pixelicious";
+  font-family: "Pixelicious";
   cursor: default;
 }
 
 @font-face {
-  font-family: "pixelicious";
-  src: url("pixelicious.ttf");
-  src: url("pixelicious.ttf") format("truetype");
+  font-family: "Pixelicious";
+  src: url("Pixelicious.ttf");
+  src: url("Pixelicious.ttf") format("truetype");
 }
 
 body {
