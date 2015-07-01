@@ -75,16 +75,16 @@ body {
 
 .heading {
   color: white;
-  padding-left: 20px;
+  /*padding-left: 20px;
   padding-right: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 20px;*/
   font-size: 2.6vw;
 }
 
-.buttons {
+/*.buttons {
   padding-left: 20px;
   padding-right: 20px;
-}
+}*/
 
 #selection button {
   cursor: pointer;
