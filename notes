@@ -1,34 +1,21 @@
 FIX THOSE UNBOUND SQUARES...
-button to clear board
-title and subtitle link back to selection screen
 
-RESIZE IS ADDING BUTTONS
-
-styling
-
-signify ends
-
-splash screen with quick demo of game
-
-make instructions pop up in modal
-button to said instruction modal
-(whole view should just be game canvas, navbar sticking on its right edge, and background)
-font(s)
+to right of canvas, on game start, unhide buttons to clear board, quit, and new board
 
 music
 victory sound
 
+more boards
+
+make instructions pop up in modal
+button to said instruction modal
+
 track completed
 cache?
 
-responsive resizing should redraw *as is*, not all over again
-
 connected sound on a pipe's connection
-dragging sound?
-breaking sound when pipe broken?
 
 play all games to ensure they're set up right (and win is triggered)
-
 make sure both github branches are up to date -- just destroy master
 
 see notes throughout
