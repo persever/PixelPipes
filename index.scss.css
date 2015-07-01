@@ -12,8 +12,8 @@
 
 @font-face {
   font-family: "pixelicious";
-  src: url("pixelicious.ttf");
-  src: url("pixelicious.ttf") format("truetype");
+  src: url("./pixelicious.ttf");
+  src: url("./pixelicious.ttf") format("truetype");
 }
 
 body {
