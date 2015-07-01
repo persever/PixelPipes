@@ -8,6 +8,8 @@ var GameView = Pipes.GameView = function GameView() {
   this.size();
   var color = Pipes.Colors[Math.floor(Math.random()*10 % Pipes.Colors.length)];
   $("#title").css("color", color)
+  $("#game-container").css("box-shadow",
+                           "0px 0px 0px 1px black, 0px 0px 0px 3px" + color);
   $(window).on("resize", this.size.bind(this));
 };
 
