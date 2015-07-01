@@ -43,6 +43,7 @@
 
   Game.prototype.fillPath = function fillPath(event) {
     var $square = $(event.currentTarget);
+    console.log($square);
     if (this.selectedPipeColor) {
           $square.removeClass();
           $square.addClass(this.selectedPipeColor);

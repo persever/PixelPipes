@@ -54,15 +54,21 @@
         $square.addClass("null");
         $square.css("height", that.frameLength / size - 2);
         $square.css("width", that.frameLength / size - 2);
-        if ($.inArray((row + "-" + col), that.pipeEndPositions) === -1) {
-          $square.on("mouseover", that.game.fillPath.bind(that.game));
-          $square.on("touchmove", that.game.fillPath.bind(that.game));
-        }
         var click = function () {
           that.game.selectPipeColor($square.attr("class"))
         };
         $square.on("mousedown", click);
-        $square.on("touchstart", click);
+        $square.on("touchstart", function () { click(); console.log("in touchstart " + that.game.selectedPipeColor);} );
+
+        // $square.on("touchmove", function (event) { that.game.fillPath(event, that.game) });
+        if ($.inArray((row + "-" + col), that.pipeEndPositions) === -1) {
+          $square.on("mouseover", that.game.fillPath.bind(that.game));
+          // >>> DO THE MOBILE SIZING FIRST
+          // TOUCHMOVE NOT WORKING INSIDE THIS LOOP
+          // TOUCHMOVE EVENT IS ON THE STARTING SQUARE
+          $square.on("touchmove", function (event) { that.game.fillPath(event, that.game) });
+        }
+
         $displayRow.append($square);
       });
     });
