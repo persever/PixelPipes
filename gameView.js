@@ -39,18 +39,26 @@ GameView.prototype.resize = function resize() {
 };
 
 GameView.prototype.setFrameLength = function setFrameLength() {
-  this.frameLength = $(window).height();
+  var frameLength1 = $(window).height();
   if ($(window).width() < $(window).height()) {
-    this.frameLength = $(window).width();
+    frameLength1 = $(window).width();
   };
-  this.frameLength -= 100;
+  var frameLength2 = window.screen.height;
+  if (window.screen.width < window.screen.height) {
+    frameLength2 = window.screen.width;
+  };
+  if (frameLength1 < frameLength2) {
+    this.frameLength = frameLength1;
+  } else {
+    this.frameLength = frameLength2;
+  }
+  this.frameLength = (this.frameLength * 0.9);
   this.frameLength = Math.floor(this.frameLength)
-  // this.frameLength = (this.frameLength < 200) ? 200 : Math.floor(this.frameLength);
 };
 
 GameView.prototype.size = function size() {
-  $("body").css("height", $(window).height());
-  $("body").css("width", $(window).width());
+  // $("body").css("height", $(window).height());
+  // $("body").css("width", $(window).width());
   $("#game-container").css("height", this.frameLength);
   $("#game-container").css("width", this.frameLength);
   $("#title-container").css("width", this.frameLength);
