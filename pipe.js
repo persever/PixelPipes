@@ -16,6 +16,8 @@ PipeEnd.prototype.draw = function draw() {
   var $pipeEndSquare = $("#" + this.pos[0] + "-" + this.pos[1])
   $pipeEndSquare.removeClass();
   $pipeEndSquare.addClass(this.color);
+  var borderWidth = this.board.frameLength / this.board.size / 4;
+  $pipeEndSquare.css("box-shadow", "inset 0px 0px 0px " + borderWidth + "px rgba(255,255,255,.2)");
   var that = this;
   (function ($el, color) {
     $el.on("mouseup", function () {

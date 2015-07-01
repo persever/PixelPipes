@@ -6,7 +6,7 @@
   var Game = Pipes.Game = function Game(sizeOption, frameLength) {
     this.size = sizeOption || 5;
     this.frameLength = frameLength;
-    this.board = new Pipes.Board(this, this.size);
+    this.board = new Pipes.Board(this, this.size, this.frameLength);
     this.selectedPipeColor = null;
     $("#game-canvas").on("won", this.victory.bind(this))
     $("#game-canvas").on("mouseup", this.mouseUp.bind(this))
@@ -28,30 +28,7 @@
   };
 
   Game.prototype.draw = function draw() {
-    $("#game-canvas").empty();
-
-    var size = this.size;
-    var that = this;
-    times(size, function(row) {
-      var $displayRow = $("<div>").attr("data-row", row)
-      $displayRow.css("height", that.frameLength / size )
-      $displayRow.css("width", that.frameLength)
-      $displayRow.addClass("row");
-      $("#game-canvas").append($displayRow);
-      times(size, function(col) {
-        var $square = $("<div>").attr("id", row + "-" + col)
-        $displayRow.append($square);
-        $square.addClass("null");
-        $square.css("height", that.frameLength / size);
-        $square.css("width", that.frameLength / size);
-        if ($.inArray((row + "-" + col), that.board.pipeEndPositions) === -1) {
-          $square.on("mouseover", that.fillPath.bind(that));
-        }
-        $square.on("mousedown", function () { that.selectPipeColor($square.attr("class")) });
-      });
-    });
-
-    this.board.drawPipeEnds.call(this.board);
+    this.board.draw();
   };
 
   Game.prototype.selectPipeColor = function selectPipeColor(color) {
