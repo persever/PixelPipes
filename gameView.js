@@ -13,7 +13,7 @@ var GameView = Pipes.GameView = function GameView() {
   $("button.continue").css("background-color", this.color);
   $("#game-container").css("box-shadow",
                            "0px 0px 0px 1px black, 0px 0px 0px 3px" + this.color);
-  $(window).on("resize", this.resize.bind(this));
+  $(window).on("resize", this.resizer.bind(this));
 };
 
 GameView.prototype.addButtons = function addButtons() {
@@ -30,7 +30,7 @@ GameView.prototype.addButtons = function addButtons() {
   })
 };
 
-GameView.prototype.resize = function resize() {
+GameView.prototype.resizer = function resizer() {
   this.setFrameLength();
   this.size();
   if (this.game) {
