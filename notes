@@ -1,6 +1,7 @@
 FIX THOSE UNBOUND SQUARES...
 
 to right of canvas, on game start, unhide buttons to clear board, quit, and new board
+slide out from right side, resizing screen
 
 music
 victory sound
@@ -10,12 +11,16 @@ more boards
 make instructions pop up in modal
 button to said instruction modal
 
+play all games to ensure they're set up right (and win is triggered)
+make sure both github branches are up to date -- just destroy master
+
+not always checking for win immediately on mouseup...
+
+see notes throughout
+
+README
+
 track completed
 cache?
 
 connected sound on a pipe's connection
-
-play all games to ensure they're set up right (and win is triggered)
-make sure both github branches are up to date -- just destroy master
-
-see notes throughout
