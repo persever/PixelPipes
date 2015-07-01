@@ -46,14 +46,21 @@
 
     <script>
         (function() {
-          window.gameView = new Pipes.GameView();
-          $("#title-container").on("click", function () {
+          var reset = function () {
             delete gameView;
+            if (!$(".victory-modal").hasClass("hidden")){
+              $(".victory-modal").addClass("hidden");
+              $(".victory-backdrop").addClass("hidden");
+            }
             $("#selection").removeClass("hidden");
             $(".buttons").empty();
             $("#game-canvas").empty();
             window.gameView = new Pipes.GameView();
-          });
+          };
+          window.gameView = new Pipes.GameView();
+          $("#title-container").on("click", reset);
+          $("button.quit").on("click", reset);
+          $("button.continue").on("click", reset);
         })();
     </script>
   </body>

@@ -7,10 +7,10 @@ if ( window.Pipes === undefined ) {
 var GameView = Pipes.GameView = function GameView() {
   this.color = Pipes.Colors[Math.floor(Math.random()*10 % Pipes.Colors.length)];
   this.size();
-  $("#title").css("color", this.color)
+  $("#title").css("color", this.color);
+  $("button.continue").css("background-color", this.color);
   $("#game-container").css("box-shadow",
                            "0px 0px 0px 1px black, 0px 0px 0px 3px" + this.color);
-  // $("#game-container").css("background-color", color);
   $(window).on("resize", this.size.bind(this));
 };
 
@@ -38,12 +38,10 @@ GameView.prototype.size = function size() {
     });
     $("#selection .buttons").append($button);
   })
-  // $("#selection .buttons button").css("background-color", this.color);
 };
 
 GameView.prototype.start = function start(size) {
   var game = new Pipes.Game(size, this.frameLength);
-  // $("#game-container").css("background-color", "black");
   game.draw();
 };
 
