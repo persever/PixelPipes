@@ -25,6 +25,7 @@ GameView.prototype.addButtons = function addButtons() {
       $("#selection").addClass("hidden");
       that.game = new Pipes.Game(size, that.frameLength);
       that.start(size);
+      $("#navigation").removeClass("hidden");
     });
     $("#selection .buttons").append($button);
   })

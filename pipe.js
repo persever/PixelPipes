@@ -16,6 +16,7 @@ PipeEnd.prototype.draw = function draw() {
   var $pipeEndSquare = $("#" + this.pos[0] + "-" + this.pos[1])
   $pipeEndSquare.removeClass();
   $pipeEndSquare.addClass(this.color);
+  $pipeEndSquare.attr("data-end", "true");
   var borderWidth = this.board.frameLength / this.board.size / 4;
   var borderColor = "rgba(255,255,255,.2)";
   if (this.color === "d") {

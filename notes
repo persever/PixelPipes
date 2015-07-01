@@ -1,5 +1,3 @@
-FIX THOSE UNBOUND SQUARES...
-
 to right of canvas, on game start, unhide buttons to clear board, quit, and new board
 slide out from right side, resizing screen
 
@@ -7,6 +5,9 @@ music
 victory sound
 
 more boards
+
+MOBILE READY SIZING
+TOUCH SCREEN FUNCTIONALITY
 
 make instructions pop up in modal
 button to said instruction modal

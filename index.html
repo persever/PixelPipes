@@ -34,6 +34,11 @@
               <div class="buttons"></div>
             </div>
             <div id="game-canvas"></div>
+            <div id="navigation" class="hidden">
+              <button class="reset">Clear Board</button>
+              <button class="continue">New Game</button>
+              <button class="quit">Quit</button>
+            </div>
           </div>
         </div>
       </div>
@@ -60,6 +65,9 @@
               $(".victory-modal").addClass("hidden");
               $(".victory-backdrop").addClass("hidden");
             }
+            if (!$("#navigation").hasClass("hidden")) {
+              $("#navigation").addClass("hidden");
+            }
             $("#selection").addClass("hidden");
             $(".buttons").empty();
             $("#game-canvas").empty();
@@ -71,6 +79,9 @@
               $(".victory-modal").addClass("hidden");
               $(".victory-backdrop").addClass("hidden");
             }
+            if (!$("#navigation").hasClass("hidden")) {
+              $("#navigation").addClass("hidden");
+            }
             $("#selection").removeClass("hidden");
             $("#game-canvas").empty();
           };
@@ -78,6 +89,10 @@
           $("#title-container").on("click", play);
           $("button.quit").on("click", restart);
           $("button.continue").on("click", newGame);
+          $("button.reset").on("click", function () {
+            $("[data-end=\"false\"]").removeClass();
+            $("[data-end=\"false\"]").addClass("null");
+          });
         })();
     </script>
   </body>
