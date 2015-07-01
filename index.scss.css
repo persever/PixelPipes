@@ -78,6 +78,7 @@ body {
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
+  font-size: 2.6vw;
 }
 
 .buttons {
@@ -91,7 +92,7 @@ body {
   background: none;
   border: none;
   border-radius: 10px;
-  font-size: 15px;
+  font-size: 2.6vw;
 }
 
 #game-canvas {
