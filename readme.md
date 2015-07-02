@@ -7,7 +7,7 @@
 ## Description
 
 PixelPipes is a logic puzzle game built in Javascript and CSS. Players select a
-pipe end and drag to the other end to connect the pipes, without crossing other
-pipelines.
+tile and drag to the matching endpoint to connect the pipes, without crossing
+other pipelines.
 
 ![Screen Shot](pipesscreenshot.jpg)
