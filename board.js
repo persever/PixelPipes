@@ -51,6 +51,7 @@
       times(size, function(col) {
         var $square = $("<div>").attr("id", row + "-" + col)
         $square.attr("data-type", "square");
+        $square.attr("data-end", "false");
         $square.addClass("null");
         $square.css("height", that.frameLength / size - 2);
         $square.css("width", that.frameLength / size - 2);

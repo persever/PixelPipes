@@ -49,6 +49,8 @@ GameView.prototype.setFrameLength = function setFrameLength() {
   this.frameLength = (this.frameLength * 0.8);
   if (this.frameLength > 500) {
     this.frameLength = 500;
+  } else if (this.frameLength < 200) {
+    this.frameLength = 200;
   } else {
     this.frameLength = Math.floor(this.frameLength);
   }

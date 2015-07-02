@@ -1,9 +1,12 @@
-to right of canvas, on game start, unhide buttons to clear board, quit, and new board
-slide out from right side, resizing screen
-
 music
-victory sound
 
+README
+
+---
+
+animate title letters like pipes connecting
+
+victory sound
 more boards
 
 MOBILE READY SIZING
@@ -12,14 +15,9 @@ TOUCH SCREEN FUNCTIONALITY
 make instructions pop up in modal
 button to said instruction modal
 
-play all games to ensure they're set up right (and win is triggered)
-make sure both github branches are up to date -- just destroy master
-
 not always checking for win immediately on mouseup...
 
 see notes throughout
-
-README
 
 track completed
 cache?
