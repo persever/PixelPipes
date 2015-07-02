@@ -11,6 +11,8 @@ more boards
 MOBILE READY SIZING
 TOUCH SCREEN FUNCTIONALITY
 
+move victory modal up to just game container, not it's container
+
 make instructions pop up in modal
 button to said instruction modal
 
@@ -22,3 +24,5 @@ track completed
 cache?
 
 connected sound on a pipe's connection
+
+add dinosaur animation. lowest priority.
