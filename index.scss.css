@@ -61,23 +61,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  /*float: left;*/
 }
-
-#game-container {
-  /*position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);*/
-}
-
-/*.game-container-container {
-  position: relative;
-  height: 100%;
-  /* make it responsive... */
-  /*width: calc(100% - 50px);*/
-  /*float: left;*/
-}*/
 
 .container {
   position: relative;
@@ -96,16 +80,8 @@
 
 .heading {
   color: white;
-  /*padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;*/
   font-size: 2.6vw;
 }
-
-/*.buttons {
-  padding-left: 20px;
-  padding-right: 20px;
-}*/
 
 #selection button {
   cursor: pointer;

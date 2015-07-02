@@ -10,13 +10,11 @@
     this.selectedPipeColor = null;
     $("#game-canvas").on("won", this.victory.bind(this))
     $("#game-canvas").on("mouseup", this.mouseUp.bind(this))
-    // $("#game-canvas").on("touchend", this.mouseUp.bind(this))
   };
 
   Game.prototype.isWon = function isWon() {
     var won = true
     this.board.pipeEndPairs.forEach(function(pipeEndPair) {
-      // make it not check pipe connection front to back and back to front -- just store pipe starts separately and check those? or store as pairs?
       if (!pipeEndPair[0].isConnected()) {
        won = false
       }

@@ -20,7 +20,7 @@ var GameView = Pipes.GameView = function GameView() {
 
 GameView.prototype.addButtons = function addButtons() {
   var that = this;
-  Object.keys(Pipes.Board.Sizes).forEach(function(size) {
+  Object.keys(Pipes.BoardSizes).forEach(function(size) {
     $button = $("<button>").append(size + "x" + size);
     $button.css("color", that.color);
     $button.on("click", function () {
