@@ -126,8 +126,6 @@
 .victory-backdrop {
   position: absolute;
   background-color: rgba(0, 0, 0, .5);
-  height: 100%;
-  width: 100%;
   z-index: 100;
   text-align: center;
 }
@@ -138,7 +136,6 @@
   padding: 20px;
   text-align: center;
   z-index: 101;
-  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }

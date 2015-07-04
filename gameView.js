@@ -60,6 +60,9 @@ GameView.prototype.size = function size() {
   $("#game-container").css("height", this.frameLength);
   $("#game-container").css("width", this.frameLength);
   $("#title-container").css("width", this.frameLength);
+  $(".victory-backdrop").css("height", this.frameLength);
+  $(".victory-backdrop").css("width", this.frameLength);
+  $(".victory-modal").css("top", this.frameLength / 2);
   $("#navigation").css("padding-top", this.frameLength / 10);
 };
 
